@@ -53,6 +53,14 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CheckedOutID,StudentsID,BooksID,SuppliesID,DepartmentID,Returned,ReturnedDate,CheckedOutDate")] CheckedOut checkedOut)
         {
+            if (db.Books.Find(checkedOut.BooksID) != null)
+            {
+                bool AvailableStatus = false;
+                int BookIDvar = 1;
+                var Availability = new Books() { Available = AvailableStatus, BooksID = BookIDvar };
+
+                db.Entry(Availability).Property(x => x.BooksID);
+            }
             if (ModelState.IsValid)
             {
                 db.CheckedOuts.Add(checkedOut);
