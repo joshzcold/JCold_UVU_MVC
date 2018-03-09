@@ -1,0 +1,51 @@
+﻿@model IEnumerable<JCold_UVU_MVC_Inventory.Models.Supplies>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+@using (Html.BeginForm("Search", "Supplies", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <input type="text" , class="form-control" , name="supplyName" , placeholder="Search Supplies by Name" />
+    <input type="submit" , class="btn btn-default" value="Search" />
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SuppliesID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SuppliesID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SuppliesID })
+            </td>
+        </tr>
+    }
+
+</table>

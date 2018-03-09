@@ -1,0 +1,69 @@
+﻿@model IEnumerable<JCold_UVU_MVC_Inventory.Models.Books>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+@using (Html.BeginForm("Search", "Books", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <input type="text" , class="form-control" , name="bookTitle" , placeholder="Search Book Titles" />
+    <input type="submit" , class="btn btn-default" value="Search" />
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BooksID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BooksID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BooksID })
+            </td>
+        </tr>
+    }
+
+</table>
