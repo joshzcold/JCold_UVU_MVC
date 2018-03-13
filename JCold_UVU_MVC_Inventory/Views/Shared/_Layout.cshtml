@@ -11,17 +11,20 @@
 </head>
 <body>
 
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container">
             <a href="#">@Html.ActionLink("UVU Inventory", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ">
                         <a href="@Url.Action("Index", "Books")" class="nav-link">Books</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="@Url.Action("Index", "Supplies")" class="nav-link">Supplies</a>
                     </li>
                     <li class="nav-item">
                         <a href="@Url.Action("Index", "Departments")" class="nav-link">Departments</a>
@@ -33,10 +36,13 @@
                         <a href="@Url.Action("Index", "CheckedOuts")" class="nav-link">Check Out</a>
                     </li>
                 </ul>
+                <br />
                 @Html.Partial("_LoginPartial")
+                <br />
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+
     
     <br />
     <div class="container body-content">
