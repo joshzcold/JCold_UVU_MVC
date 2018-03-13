@@ -1,4 +1,4 @@
-﻿@model JCold_UVU_MVC_Inventory.Models.CheckedOut
+﻿@model JCold_UVU_MVC_Inventory.Models.CheckOutSupplies
 
 @{
     ViewBag.Title = "Details";
@@ -7,17 +7,9 @@
 <h2>Details</h2>
 
 <div>
-    <h4>CheckedOut</h4>
+    <h4>CheckOutSupplies</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Books.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Books.Title)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Department.DepName)
         </dt>
@@ -43,11 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Returned)
+            @Html.DisplayNameFor(model => model.ReturnedSupply)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Returned)
+            @Html.DisplayFor(model => model.ReturnedSupply)
         </dd>
 
         <dt>
@@ -69,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CheckedOutID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CheckOutSuppliesID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

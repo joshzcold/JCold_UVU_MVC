@@ -193,7 +193,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
-    <Compile Include="Controllers\CheckedOutsController.cs" />
+    <Compile Include="Controllers\CheckOutBooksController.cs" />
+    <Compile Include="Controllers\CheckOutSuppliesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -204,7 +205,8 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Books.cs" />
-    <Compile Include="Models\CheckedOut.cs" />
+    <Compile Include="Models\CheckOutBook.cs" />
+    <Compile Include="Models\CheckOutSupplies.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JCold_UVU_MVC_InventoryDb.cs" />
@@ -335,11 +337,6 @@
     <Content Include="Views\Supplies\Details.cshtml" />
     <Content Include="Views\Supplies\Edit.cshtml" />
     <Content Include="Views\Supplies\Index.cshtml" />
-    <Content Include="Views\CheckedOuts\Create.cshtml" />
-    <Content Include="Views\CheckedOuts\Delete.cshtml" />
-    <Content Include="Views\CheckedOuts\Details.cshtml" />
-    <Content Include="Views\CheckedOuts\Edit.cshtml" />
-    <Content Include="Views\CheckedOuts\Index.cshtml" />
     <Content Include="Views\Books\Search.cshtml" />
     <Content Include="Views\Students\Search.cshtml" />
     <Content Include="Views\Supplies\Search.cshtml" />
@@ -352,6 +349,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\CheckOutSupplies\Create.cshtml" />
+    <Content Include="Views\CheckOutSupplies\Delete.cshtml" />
+    <Content Include="Views\CheckOutSupplies\Details.cshtml" />
+    <Content Include="Views\CheckOutSupplies\Edit.cshtml" />
+    <Content Include="Views\CheckOutSupplies\Index.cshtml" />
+    <Content Include="Views\CheckOutBooks\Create.cshtml" />
+    <Content Include="Views\CheckOutBooks\Delete.cshtml" />
+    <Content Include="Views\CheckOutBooks\Details.cshtml" />
+    <Content Include="Views\CheckOutBooks\Edit.cshtml" />
+    <Content Include="Views\CheckOutBooks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
