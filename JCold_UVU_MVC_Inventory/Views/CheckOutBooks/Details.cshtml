@@ -1,14 +1,13 @@
-﻿@model JCold_UVU_MVC_Inventory.Models.CheckedOut
+﻿@model JCold_UVU_MVC_Inventory.Models.CheckOutBook
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Details";
 }
 
-<h2>Delete</h2>
+<h2>Details</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>CheckedOut</h4>
+    <h4>CheckOutBook</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -36,19 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Supplies.Name)
+            @Html.DisplayNameFor(model => model.ReturnedBook)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Supplies.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Returned)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Returned)
+            @Html.DisplayFor(model => model.ReturnedBook)
         </dd>
 
         <dt>
@@ -68,13 +59,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CheckOutBookID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

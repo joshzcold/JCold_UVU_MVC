@@ -1,0 +1,63 @@
+﻿@model IEnumerable<JCold_UVU_MVC_Inventory.Models.CheckOutBook>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Books.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.DepName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnedBook)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckedOutDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Books.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.DepName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Students.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReturnedBook)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReturnedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckedOutDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CheckOutBookID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CheckOutBookID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CheckOutBookID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -27,6 +27,8 @@ namespace JCold_UVU_MVC_Inventory.Models
 
         public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.Supplies> Supplies { get; set; }
 
-        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.CheckedOut> CheckedOuts { get; set; }
+        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.CheckOutBook> CheckOutBooks { get; set; }
+
+        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.CheckOutSupplies> CheckOutSupplies { get; set; }
     }
 }
