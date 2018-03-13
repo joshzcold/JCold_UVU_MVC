@@ -32,9 +32,14 @@
                     <li class="nav-item">
                         <a href="@Url.Action("Index", "Students")" class="nav-link">Students</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "CheckedOuts")" class="nav-link">Check Out</a>
-                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Check out
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="@Url.Action("Index", "CheckOutBooks")">Books</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "CheckOutSupplies")">Supplies</a>
+                        </div>
                 </ul>
                 <br />
                 @Html.Partial("_LoginPartial")
