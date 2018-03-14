@@ -21,7 +21,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                 from chks in db.CheckOutSupplies
                 join sp in db.Supplies
                 on chks.SuppliesID equals sp.SuppliesID
-                where chks.SuppliesID == sp.SuppliesID
+                where chks.SuppliesID == sp.SuppliesID && chks.ReturnedSupply == false
                 select sp;
 
             foreach (Supplies chks in UpdateQuery)

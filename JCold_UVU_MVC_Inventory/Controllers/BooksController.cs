@@ -21,7 +21,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                 from chkb in db.CheckOutBooks
                 join bk in db.Books
                 on chkb.BooksID equals bk.BooksID
-                where chkb.BooksID == bk.BooksID
+                where chkb.BooksID == bk.BooksID && chkb.ReturnedBook == false
                 select bk;
 
             foreach (Books chkb in UpdateQuery)
