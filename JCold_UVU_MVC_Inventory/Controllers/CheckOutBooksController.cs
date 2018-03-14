@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -54,6 +55,19 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CheckOutBookID,StudentsID,BooksID,DepartmentID,ReturnedBook,ReturnedDate,CheckedOutDate")] CheckOutBook checkOutBook)
         {
+            //var UpdateQuery =
+            //    from chkb in db.CheckOutBooks
+            //    join bk in db.Books
+            //    on chkb.BooksID equals bk.BooksID
+            //    where chkb.BooksID == bk.BooksID
+            //    select bk;
+
+            //foreach(Books chkb in UpdateQuery)
+            //{
+            //    chkb.Available = false;
+            //}
+
+
             if (ModelState.IsValid)
             {
                 db.CheckOutBooks.Add(checkOutBook);
@@ -65,6 +79,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "DepName", checkOutBook.DepartmentID);
             ViewBag.StudentsID = new SelectList(db.Students, "StudentsID", "StudentName", checkOutBook.StudentsID);
             return View(checkOutBook);
+
         }
 
         // GET: CheckOutBooks/Edit/5
