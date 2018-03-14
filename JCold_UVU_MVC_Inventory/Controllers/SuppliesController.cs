@@ -17,6 +17,17 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // GET: Supplies
         public ActionResult Index()
         {
+            var UpdateQuery =
+                from chks in db.CheckOutSupplies
+                join sp in db.Supplies
+                on chks.SuppliesID equals sp.SuppliesID
+                where chks.SuppliesID == sp.SuppliesID && chks.ReturnedSupply == false
+                select sp;
+
+            foreach (Supplies chks in UpdateQuery)
+            {
+                chks.Available = false;
+            }
             return View(db.Supplies.ToList());
         }
 
@@ -51,7 +62,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SuppliesID,Name,Value,Number")] Supplies supplies)
+        public ActionResult Create([Bind(Include = "SuppliesID,Name,Value,Number,Available")] Supplies supplies)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +94,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SuppliesID,Name,Value,Number")] Supplies supplies)
+        public ActionResult Edit([Bind(Include = "SuppliesID,Name,Value,Number,Available")] Supplies supplies)
         {
             if (ModelState.IsValid)
             {

@@ -17,6 +17,17 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // GET: Books
         public ActionResult Index()
         {
+            var UpdateQuery =
+                from chkb in db.CheckOutBooks
+                join bk in db.Books
+                on chkb.BooksID equals bk.BooksID
+                where chkb.BooksID == bk.BooksID && chkb.ReturnedBook == false
+                select bk;
+
+            foreach (Books chkb in UpdateQuery)
+            {
+                chkb.Available = false;
+            }
             return View(db.Books.ToList());
         }
 
