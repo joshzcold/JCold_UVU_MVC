@@ -25,7 +25,7 @@ textarea {
 
 /* unvisited link */
 a:link {
-    color: #a5a5a5;
+    color: #969696;
 }
 
 /* mouse over link */
@@ -37,4 +37,9 @@ a:hover {
 /* selected link */
 a:active {
     color: #495057;
-} 
+}
+
+/* visited link */
+a:visited {
+    color: #969696;
+}

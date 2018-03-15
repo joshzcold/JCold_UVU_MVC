@@ -10,16 +10,16 @@
     <div class="col-md-4">
         <h2>Books Inventory</h2>
         <p>Here you can add or remove books from the inventory</p>
-        <p>@Html.ActionLink("Books", "Index", "Books",null,  new { @class = "btn btn-info btn-lg" })</p>
+        <a href="@Url.Action("Index", "Books")" style="color: white" class="btn btn-info btn-lg">Books</a>
     </div>
     <div class="col-md-4">
         <h2>Supplies Inventory</h2>
         <p>Here you can add or remove supplies from the inventory</p>
-        @Html.ActionLink("Supplies", "Index", "Supplies", null, new { @class = "btn btn-info btn-lg" })
+        <a href="@Url.Action("Index", "Supplies")" style="color: white" class="btn btn-info btn-lg">Supplies</a>
     </div>
     <div class="col-md-4">
         <h2>Student Inventory</h2>
         <p>Here you can add or remove students from the inventory.</p>
-        @Html.ActionLink("Students", "Index", "Students", null, new { @class = "btn btn-info btn-lg" })
+        <a href="@Url.Action("Index", "Students")" style="color: white" class="btn btn-info btn-lg">Students</a>
     </div>
 </div>
