@@ -62,9 +62,9 @@
                 @Html.DisplayFor(modelItem => item.DepChairEmail)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.DepartmentID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentID })
+                <a href="@Url.Action("Edit", "Departments", new { id = item.DepartmentID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                <a href="@Url.Action("Details", "Departments", new { id = item.DepartmentID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+                <a href="@Url.Action("Delete", "Departments", new { id = item.DepartmentID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
             </td>
         </tr>
     }

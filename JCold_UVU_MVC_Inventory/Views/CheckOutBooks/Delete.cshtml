@@ -40,7 +40,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReturnedBook)
+            @if(Model.ReturnedBook) {
+                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else {
+                <i class="fa fa-lg fa-times-circle" style="color: darkgoldenrod"></i>
+                }
         </dd>
 
         <dt>
@@ -65,7 +70,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

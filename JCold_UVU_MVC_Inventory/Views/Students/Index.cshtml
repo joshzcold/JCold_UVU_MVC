@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.StudentPhone)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StudentsID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.StudentsID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.StudentsID })
+                <a href="@Url.Action("Edit", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+                <a href="@Url.Action("Delete", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
             </td>
         </tr>
     }

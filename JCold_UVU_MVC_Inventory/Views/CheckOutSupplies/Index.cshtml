@@ -46,7 +46,12 @@
             @Html.DisplayFor(modelItem => item.Supplies.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReturnedSupply)
+            @if(@item.ReturnedSupply) {
+                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else {
+                <i class="fa fa-lg fa-times-circle" style="color: darkgoldenrod"></i>
+                }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReturnedDate)
@@ -55,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.CheckedOutDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CheckOutSuppliesID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CheckOutSuppliesID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CheckOutSuppliesID })
+            <a href="@Url.Action("Edit", "CheckOutSupplies", new { id = item.CheckOutSuppliesID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+            <a href="@Url.Action("Details", "CheckOutSupplies", new { id = item.CheckOutSuppliesID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+            <a href="@Url.Action("Delete", "CheckOutSupplies", new { id = item.CheckOutSuppliesID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
         </td>
     </tr>
 }
