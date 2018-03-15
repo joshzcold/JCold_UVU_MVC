@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<JCold_UVU_MVC_Inventory.Models.CheckOutBook>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Book Check Out";
 }
 
-<h2>Index</h2>
+<h2>Check out Books</h2>
 
+<br />
+<br />
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "CheckOutBooks")" style="color: white" class="btn btn-primary">Check out</a>
 </p>
 <table class="table">
     <tr>

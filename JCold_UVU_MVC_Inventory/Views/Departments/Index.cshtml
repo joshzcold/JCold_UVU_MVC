@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<JCold_UVU_MVC_Inventory.Models.Department>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Create Departments";
 }
 
-<h2>Index</h2>
+<h2>Departments</h2>
 
+<br />
+<br />
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Departments")" style="color: white" class="btn btn-primary">Add Department</a>
 </p>
 <table class="table">
     <tr>
@@ -35,35 +37,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telephone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WebAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepChair)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepChairEmail)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DepartmentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DepartmentID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepChair)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepChairEmail)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DepartmentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentID })
+            </td>
+        </tr>
+    }
 
 </table>
