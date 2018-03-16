@@ -233,6 +233,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\UVUMonogramBlack-0006.png" />
+    <Content Include="Images\UVUMonogramGreen-0005.png" />
+    <Content Include="Images\UVUMonogramWhite-0007.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

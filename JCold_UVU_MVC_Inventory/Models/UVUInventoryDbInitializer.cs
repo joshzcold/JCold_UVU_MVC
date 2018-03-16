@@ -26,7 +26,7 @@ namespace JCold_UVU_MVC_Inventory.Models
                 WebAddress = "IT.uvu.edu"
             });
             context.Students.Add(new Students { StudentName = "Joshua Cold", StudentEmail = "10627512@my.uvu.edu", StudentPhone = "8015555555", UVUID = 10627512 });
-            context.Students.Add(new Students { StudentName = "Cameron Pattberg", StudentEmail = "4568524@my.uvu.edu", StudentPhone = "555-555-5555", UVUID = 4568524 });
+            context.Students.Add(new Students { StudentName = "Cameron Pattberg", StudentEmail = "4568524@my.uvu.edu", StudentPhone = "555-555-5555", UVUID = 45685246 });
 
             context.Supplies.Add(new Supplies { Name = "Laptop", Number = 2, Value = "$500" });
             context.Supplies.Add(new Supplies { Name = "Protrator", Number = 3, Value = "$1000" });

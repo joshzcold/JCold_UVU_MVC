@@ -9,6 +9,7 @@ namespace JCold_UVU_MVC_Inventory.Models
     public class Supplies
     {
         public virtual int SuppliesID { get; set; }
+        [Required(ErrorMessage ="Provide a Supply Name")]
         [Display(Name ="Supply Name")]
         public virtual string Name { get; set; }
         public virtual string Value { get; set; }
