@@ -43,3 +43,8 @@ a:active {
 a:visited {
     color: #969696;
 }
+
+.img-logo{
+    width: 128px;
+    height: 71px;
+}
