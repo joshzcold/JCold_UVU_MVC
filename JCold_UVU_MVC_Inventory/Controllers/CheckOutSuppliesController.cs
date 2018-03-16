@@ -39,14 +39,15 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // GET: CheckOutSupplies/Create
         public ActionResult Create()
         {
+            // Defining Values to pass into ViewBag below selectListStudents and Supplies
             var students = db.Students.Where(s => s.StudentsID == s.StudentsID).ToList();
             IEnumerable<SelectListItem>
                 selectListStudents = from s in students
-                select new SelectListItem
-                 {
-                     Value = s.StudentsID.ToString(),
-                     Text = s.StudentName + ", UVUID: " + s.UVUID
-                 };
+                                     select new SelectListItem
+                                     {
+                                         Value = s.StudentsID.ToString(),
+                                         Text = s.StudentName + ", UVUID: " + s.UVUID + "  "
+                                     };
 
             var supplies = db.Supplies.Where(s => s.SuppliesID == s.SuppliesID).ToList();
             IEnumerable<SelectListItem>
@@ -54,7 +55,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                                      select new SelectListItem
                                      {
                                          Value = s.SuppliesID.ToString(),
-                                         Text = s.Name + ", Value: " + s.Value + ", Number: " + s.Number
+                                         Text = s.Name + ", Value: " + s.Value + ", Number: " + s.Number + "  "
                                      };
 
 
@@ -99,9 +100,28 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             {
                 return HttpNotFound();
             }
+            // Defining Values to pass into ViewBag below selectListStudents and Supplies
+            var students = db.Students.Where(s => s.StudentsID == s.StudentsID).ToList();
+            IEnumerable<SelectListItem>
+                selectListStudents = from s in students
+                                     select new SelectListItem
+                                     {
+                                         Value = s.StudentsID.ToString(),
+                                         Text = s.StudentName + ", UVUID: " + s.UVUID + "  "
+                                     };
+
+            var supplies = db.Supplies.Where(s => s.SuppliesID == s.SuppliesID).ToList();
+            IEnumerable<SelectListItem>
+                selectListSupplies = from s in supplies
+                                     select new SelectListItem
+                                     {
+                                         Value = s.SuppliesID.ToString(),
+                                         Text = s.Name + ", Value: " + s.Value + ", Number: " + s.Number + "  "
+                                     };
+
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "DepName", checkOutSupplies.DepartmentID);
-            ViewBag.StudentsID = new SelectList(db.Students, "StudentsID", "StudentName", checkOutSupplies.StudentsID);
-            ViewBag.SuppliesID = new SelectList(db.Supplies, "SuppliesID", "Name", checkOutSupplies.SuppliesID);
+            ViewBag.StudentsID = new SelectList(selectListStudents, "Value", "Text", checkOutSupplies.StudentsID);
+            ViewBag.SuppliesID = new SelectList(selectListSupplies, "Value", "Text", checkOutSupplies.SuppliesID);
             return View(checkOutSupplies);
         }
 
