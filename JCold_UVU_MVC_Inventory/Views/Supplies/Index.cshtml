@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Supplies</h2>
+<h2><i class="fa fa-lg fa-pencil"></i> Supplies</h2>
 
 @using (Html.BeginForm("Search", "Supplies", FormMethod.Get, new { @class = "form-inline" }))
 {
-    <input type="text" , class="form-control" , name="supplyName" , placeholder="Search Supplies by Name" />
+    <input type="text" , class="form-control" , name="supplyName" , placeholder="Search Supply Name" />
     <input type="submit" , class="btn btn-default" value="Search" />
 }
 <br />
@@ -46,12 +46,17 @@
                 @Html.DisplayFor(modelItem => item.Number)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Available)
+                @if(@item.Available) {
+                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else {
+                <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
+                }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.SuppliesID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.SuppliesID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.SuppliesID })
+                <a href="@Url.Action("Edit", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                <a href="@Url.Action("Details", "Supplies", new { id = item.SuppliesID})" style="color: black" class="btn btn-sm btn-light">Details</a>
+                <a href="@Url.Action("Delete", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
             </td>
         </tr>
     }

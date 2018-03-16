@@ -40,9 +40,29 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // GET: CheckOutBooks/Create
         public ActionResult Create()
         {
-            ViewBag.BooksID = new SelectList(db.Books, "BooksID", "Title");
+            // Defining Values to pass into ViewBag below selectListStudents and Books
+            var students = db.Students.Where(s => s.StudentsID == s.StudentsID).ToList();
+            IEnumerable<SelectListItem>
+                selectListStudents = from s in students
+                                     select new SelectListItem
+                                     {
+                                         Value = s.StudentsID.ToString(),
+                                         Text = s.StudentName + ", UVUID: " + s.UVUID + "  "
+                                     };
+
+            var books = db.Books.Where(s => s.BooksID == s.BooksID).ToList();
+            IEnumerable<SelectListItem>
+                selectListBooks = from s in books
+                                     select new SelectListItem
+                                     {
+                                         Value = s.BooksID.ToString(),
+                                         Text = s.Title + ", ISBN: " + s.ISBN + ", Number: " + s.Number + "  "
+                                     };
+
+            ViewBag.BooksID = new SelectList(selectListBooks, "Value", "Text");
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "DepName");
-            ViewBag.StudentsID = new SelectList(db.Students, "StudentsID", "StudentName");
+            ViewBag.StudentsID = new SelectList(selectListStudents, "Value", "Text");
+
             CheckOutBook model = new CheckOutBook();
             model.CheckedOutDate = DateTime.Now;
             return View(model);
@@ -55,18 +75,6 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CheckOutBookID,StudentsID,BooksID,DepartmentID,ReturnedBook,ReturnedDate,CheckedOutDate")] CheckOutBook checkOutBook)
         {
-            //var UpdateQuery =
-            //    from chkb in db.CheckOutBooks
-            //    join bk in db.Books
-            //    on chkb.BooksID equals bk.BooksID
-            //    where chkb.BooksID == bk.BooksID
-            //    select bk;
-
-            //foreach(Books chkb in UpdateQuery)
-            //{
-            //    chkb.Available = false;
-            //}
-
 
             if (ModelState.IsValid)
             {
@@ -94,9 +102,27 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BooksID = new SelectList(db.Books, "BooksID", "Title", checkOutBook.BooksID);
+            // Defining Values to pass into ViewBag below selectListStudents and Books
+            var students = db.Students.Where(s => s.StudentsID == s.StudentsID).ToList();
+            IEnumerable<SelectListItem>
+                selectListStudents = from s in students
+                                     select new SelectListItem
+                                     {
+                                         Value = s.StudentsID.ToString(),
+                                         Text = s.StudentName + ", UVUID: " + s.UVUID + "  "
+                                     };
+
+            var books = db.Books.Where(s => s.BooksID == s.BooksID).ToList();
+            IEnumerable<SelectListItem>
+                selectListBooks = from s in books
+                                  select new SelectListItem
+                                  {
+                                      Value = s.BooksID.ToString(),
+                                      Text = s.Title + ", ISBN: " + s.ISBN + ", Number: " + s.Number + "  "
+                                  };
+            ViewBag.BooksID = new SelectList(selectListBooks, "Value", "Text", checkOutBook.BooksID);
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "DepName", checkOutBook.DepartmentID);
-            ViewBag.StudentsID = new SelectList(db.Students, "StudentsID", "StudentName", checkOutBook.StudentsID);
+            ViewBag.StudentsID = new SelectList(selectListStudents, "Value", "Text", checkOutBook.StudentsID);
             return View(checkOutBook);
         }
 

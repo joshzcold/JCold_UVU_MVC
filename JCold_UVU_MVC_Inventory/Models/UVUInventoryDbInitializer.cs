@@ -10,8 +10,8 @@ namespace JCold_UVU_MVC_Inventory.Models
     {
         protected override void Seed(JCold_UVU_MVC_InventoryDb context)
         {
-            context.Books.Add(new Books { Title = "Harry Potter", Author = "Jk Rollowing", ISBN = 4859364, Number = 1, Publisher = "Penguin" });
-            context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = 123468, Number = 1, Publisher = "O'Reiliy" });
+            context.Books.Add(new Books { Title = "Harry Potter", Author = "Jk Rollowing", ISBN = "9788700631625", Number =7, Publisher = "Penguin" });
+            context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 8, Publisher = "O'Reiliy" });
             context.Departments.Add(new Department
             { DepName = "Computer Science", DepChair = "Keith Mulbery", DepChairEmail = "KM@uvu.edu",
                 Email = "CS@uvu.edu", Location = "CS401", Telephone = "801-919-5180", WebAddress = "CS.uvu.edu" });

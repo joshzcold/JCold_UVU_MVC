@@ -4,7 +4,7 @@
     ViewBag.Title = "Create Books";
 }
 
-<h2>Books</h2>
+<h2><i class="fa fa-lg fa-book"></i> Books </h2>
 
 @using (Html.BeginForm("Search", "Books", FormMethod.Get, new { @class = "form-inline" }))
 {
@@ -58,12 +58,17 @@
                 @Html.DisplayFor(modelItem => item.Number)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Available)
+                @if(@item.Available) {
+                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else {
+                <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
+                }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BooksID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.BooksID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BooksID })
+                <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                <a href="@Url.Action("Details", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+                <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
             </td>
         </tr>
     }

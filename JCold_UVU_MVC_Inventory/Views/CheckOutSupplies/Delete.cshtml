@@ -40,7 +40,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReturnedSupply)
+            @if(Model.ReturnedSupply) {
+                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else {
+                <i class="fa fa-lg fa-times-circle" style="color: darkgoldenrod"></i>
+                }
         </dd>
 
         <dt>

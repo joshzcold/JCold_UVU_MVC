@@ -4,7 +4,7 @@
     ViewBag.Title = "Book Check Out";
 }
 
-<h2>Check out Books</h2>
+<h2><i class="fa fa-lg fa-calendar-check-o"></i> Check out Books</h2>
 
 <br />
 <br />
@@ -46,7 +46,12 @@
             @Html.DisplayFor(modelItem => item.Students.StudentName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReturnedBook)
+            @if(@item.ReturnedBook) {
+                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else {
+                <i class="fa fa-lg fa-times-circle" style="color: darkgoldenrod"></i>
+                }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReturnedDate)
@@ -55,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.CheckedOutDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CheckOutBookID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CheckOutBookID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CheckOutBookID })
+            <a href="@Url.Action("Edit", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+            <a href="@Url.Action("Details", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+            <a href="@Url.Action("Delete", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
         </td>
     </tr>
 }
