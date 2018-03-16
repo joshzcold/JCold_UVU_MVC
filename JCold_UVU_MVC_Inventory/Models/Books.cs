@@ -11,7 +11,7 @@ namespace JCold_UVU_MVC_Inventory.Models
         public virtual int BooksID { get; set; }
         [Display(Name ="Book Title")]
         public virtual string Title { get; set; }
-        public virtual int ISBN { get; set; }
+        public virtual string ISBN { get; set; }
         public virtual string Author { get; set; }
         public virtual string Publisher { get; set; }
         public virtual int Number { get; set; }
