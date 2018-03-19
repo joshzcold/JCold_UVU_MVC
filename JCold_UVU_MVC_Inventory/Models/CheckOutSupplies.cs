@@ -16,7 +16,7 @@ namespace JCold_UVU_MVC_Inventory.Models
         [Display(Name ="Returned Supply")]
         public virtual bool ReturnedSupply { get; set; }
         [Column(TypeName = "datetime2")]
-        [Display(Name ="Returned")]
+        [Display(Name ="Returned Date")]
         public virtual DateTime? ReturnedDate { get; set; }
         [Column(TypeName = "datetime2")]
         [Display(Name ="Check out Date")]
