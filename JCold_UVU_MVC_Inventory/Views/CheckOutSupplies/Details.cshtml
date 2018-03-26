@@ -19,19 +19,23 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Students.StudentName)
+            @Html.DisplayNameFor(model => model.Students.StudentName), UVU ID, Email
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Students.StudentName)
+            @Html.DisplayFor(model => model.Students.StudentName),
+            @Html.DisplayFor(Model => Model.Students.UVUID),
+            @Html.DisplayFor(Model => Model.Students.StudentEmail)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Supplies.Name)
+            @Html.DisplayNameFor(model => model.Supplies.Name), Value, Number
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Supplies.Name)
+            @Html.DisplayFor(model => model.Supplies.Name),
+            @Html.DisplayFor(Model => Model.Supplies.Value),
+            #@Html.DisplayFor(Model => Model.Supplies.Number)
         </dd>
 
         <dt>
@@ -40,6 +44,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.ReturnedSupply)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
         </dd>
 
         <dt>

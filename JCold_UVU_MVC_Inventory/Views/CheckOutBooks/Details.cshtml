@@ -11,11 +11,13 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Books.Title)
+            @Html.DisplayNameFor(model => model.Books.Title), ISBN, Number
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Books.Title)
+            @Html.DisplayFor(model => model.Books.Title),
+            @Html.DisplayFor(model => model.Books.ISBN),
+            #@Html.DisplayFor(Model => Model.Books.Number)
         </dd>
 
         <dt>
@@ -27,11 +29,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Students.StudentName)
+            @Html.DisplayNameFor(model => model.Students.StudentName), UVU ID, Email
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Students.StudentName)
+            @Html.DisplayFor(model => model.Students.StudentName),
+            @Html.DisplayFor(model => model.Students.UVUID),
+            @Html.DisplayFor(model => model.Students.StudentEmail)
         </dd>
 
         <dt>
@@ -40,6 +44,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.ReturnedBook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
         </dd>
 
         <dt>

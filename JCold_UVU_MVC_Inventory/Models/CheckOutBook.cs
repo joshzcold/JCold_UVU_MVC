@@ -13,7 +13,9 @@ namespace JCold_UVU_MVC_Inventory.Models
         public int StudentsID { get; set; }
         public int BooksID { get; set; }
         public int DepartmentID { get; set; }
-        [Display(Name ="Returned")]
+        [Column(TypeName ="datetime2")]
+        public virtual DateTime DueDate { get; set; }
+        [Display(Name = "Returned")]
         public bool ReturnedBook { get; set; }
         [Column(TypeName = "datetime2")]
         [Display(Name ="Returned Date")]

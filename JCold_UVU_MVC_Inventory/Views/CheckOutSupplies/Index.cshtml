@@ -26,6 +26,9 @@
             @Html.DisplayNameFor(model => model.ReturnedSupply)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ReturnedDate)
         </th>
         <th>
@@ -52,6 +55,9 @@
                 else {
                 <i class="fa fa-lg fa-times-circle" style="color: darkgoldenrod"></i>
                 }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReturnedDate)
