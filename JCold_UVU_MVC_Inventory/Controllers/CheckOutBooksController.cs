@@ -65,6 +65,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
             CheckOutBook model = new CheckOutBook();
             model.CheckedOutDate = DateTime.Now;
+            model.DueDate = DateTime.Now.AddDays(7);
             return View(model);
         }
 
@@ -73,7 +74,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CheckOutBookID,StudentsID,BooksID,DepartmentID,ReturnedBook,ReturnedDate,CheckedOutDate")] CheckOutBook checkOutBook)
+        public ActionResult Create([Bind(Include = "CheckOutBookID,StudentsID,BooksID,DepartmentID,DueDate,ReturnedBook,ReturnedDate,CheckedOutDate")] CheckOutBook checkOutBook)
         {
 
             if (ModelState.IsValid)
@@ -131,7 +132,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CheckOutBookID,StudentsID,BooksID,DepartmentID,ReturnedBook,ReturnedDate,CheckedOutDate")] CheckOutBook checkOutBook)
+        public ActionResult Edit([Bind(Include = "CheckOutBookID,StudentsID,BooksID,DepartmentID,DueDate,ReturnedBook,ReturnedDate,CheckedOutDate")] CheckOutBook checkOutBook)
         {
             if (checkOutBook.ReturnedBook)
             {

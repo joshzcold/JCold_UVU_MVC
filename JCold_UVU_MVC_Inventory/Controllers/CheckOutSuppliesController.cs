@@ -65,6 +65,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             ViewBag.SuppliesID = new SelectList(selectListSupplies, "Value", "Text");
             CheckOutSupplies model = new CheckOutSupplies();
             model.CheckedOutDate = DateTime.Now;
+            model.DueDate = DateTime.Now.AddDays(7);
             return View(model);
         }
 
@@ -73,7 +74,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CheckOutSuppliesID,StudentsID,SuppliesID,DepartmentID,ReturnedSupply,ReturnedDate,CheckedOutDate")] CheckOutSupplies checkOutSupplies)
+        public ActionResult Create([Bind(Include = "CheckOutSuppliesID,StudentsID,SuppliesID,DepartmentID,DueDate,ReturnedSupply,ReturnedDate,CheckedOutDate")] CheckOutSupplies checkOutSupplies)
         {
             if (ModelState.IsValid)
             {
@@ -130,7 +131,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CheckOutSuppliesID,StudentsID,SuppliesID,DepartmentID,ReturnedSupply,ReturnedDate,CheckedOutDate")] CheckOutSupplies checkOutSupplies)
+        public ActionResult Edit([Bind(Include = "CheckOutSuppliesID,StudentsID,SuppliesID,DepartmentID,DueDate,ReturnedSupply,ReturnedDate,CheckedOutDate")] CheckOutSupplies checkOutSupplies)
         {
             if (checkOutSupplies.ReturnedSupply)
             {
