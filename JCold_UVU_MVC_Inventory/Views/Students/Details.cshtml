@@ -1,4 +1,5 @@
 ﻿@model JCold_UVU_MVC_Inventory.Models.Students
+@using JCold_UVU_MVC_Inventory.Models;
 
 @{
     ViewBag.Title = "Details";
@@ -44,25 +45,39 @@
         <dt>
             @Html.DisplayNameFor(model => model.HasCheckedOutBooks)
         </dt>
-        <!-- TODO fix this td so it takes true false arguments-->
+
         <td>
-            @if(Model.HasCheckedOutBooks) {
-                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+            @if (Model.HasCheckedOutBooks)
+            {
+
+                foreach (var item in ViewBag.CheckBookQuery)
+                {
+                    @item
+                    <br />
                 }
-                else {
+            }
+            else
+            {
                 <p>N/A</p>
-                }
+            }
         </td>
+
         <dt>
             @Html.DisplayNameFor(model => model.HasCheckedOutSupplies)
         </dt>
         <td>
-            @if(Model.HasCheckedOutSupplies) {
-                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+            @if (Model.HasCheckedOutSupplies)
+            {
+                foreach (var item in ViewBag.CheckSuppliesQuery)
+                {
+                    @item
+                    <br />
                 }
-                else {
+            }
+            else
+            {
                 <p>N/A</p>
-                }
+            }
         </td>
 
     </dl>

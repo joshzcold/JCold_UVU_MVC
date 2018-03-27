@@ -18,17 +18,32 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         public ActionResult Index()
         {
 
-            var UpdateQuery =
+            // TODO Add Query that will update HasCheckedBook to false when a book is returned or deleted. 
+            var UpdateQueryBooks =
                from chks in db.CheckOutBooks
                join st in db.Students
                on chks.StudentsID equals st.StudentsID
                where chks.StudentsID == st.StudentsID && chks.ReturnedBook == false
                select st;
 
-            foreach (Students chks in UpdateQuery)
+            var UpdateQuerySupplies =
+               from chks in db.CheckOutSupplies
+               join st in db.Students
+               on chks.StudentsID equals st.StudentsID
+               where chks.StudentsID == st.StudentsID && chks.ReturnedSupply == false
+               select st;
+
+            foreach (Students chks in UpdateQuerySupplies)
+            {
+                chks.HasCheckedOutSupplies = true;
+            }
+
+            foreach (Students chks in UpdateQueryBooks)
             {
                 chks.HasCheckedOutBooks = true;
             }
+
+            db.SaveChanges();
             return View(db.Students.ToList());
         }
 
@@ -49,6 +64,25 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             {
                 return HttpNotFound();
             }
+
+            var CheckedBooksSelectQuery =
+                from chks in db.CheckOutBooks
+                 join st in db.Students
+                 on chks.StudentsID equals st.StudentsID join bk in db.Books
+                 on chks.BooksID equals bk.BooksID
+                 where chks.StudentsID == st.StudentsID && chks.ReturnedBook == false
+                 select new { bk.Title,bk.ISBN, bk.Number, bk.ClassRoom, chks.CheckedOutDate, chks.DueDate, chks.ReturnedDate };
+
+            var CheckedSuppliesSelectQuery =
+                from chks in db.CheckOutSupplies
+                 join st in db.Students
+                 on chks.StudentsID equals st.StudentsID join bk in db.Supplies
+                 on chks.SuppliesID equals bk.SuppliesID
+                 where chks.StudentsID == st.StudentsID && chks.ReturnedSupply == false
+                 select new { bk.Name,bk.Number, bk.Value, bk.ClassRoom, chks.CheckedOutDate, chks.DueDate, chks.ReturnedDate };
+
+            ViewBag.CheckSuppliesQuery = CheckedSuppliesSelectQuery;
+            ViewBag.CheckBookQuery = CheckedBooksSelectQuery;
             return View(students);
         }
 

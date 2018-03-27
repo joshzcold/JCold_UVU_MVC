@@ -33,6 +33,9 @@
         <th>
             @Html.DisplayNameFor(model => model.HasCheckedOutBooks)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasCheckedOutSupplies)
+        </th>
         <th></th>
     </tr>
 
@@ -53,6 +56,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.HasCheckedOutBooks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasCheckedOutSupplies)
         </td>
         <td>
             <a href="@Url.Action("Edit", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
