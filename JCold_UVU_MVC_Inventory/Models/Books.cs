@@ -17,6 +17,7 @@ namespace JCold_UVU_MVC_Inventory.Models
         public virtual string Publisher { get; set; }
         public virtual int Number { get; set; }
         public virtual bool Available { get; set; } = true;
+        [Display(Name ="Class Room")]
         public virtual string ClassRoom { get; set; }
     }
 }
