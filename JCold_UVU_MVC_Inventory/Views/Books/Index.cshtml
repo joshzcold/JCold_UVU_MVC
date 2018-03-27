@@ -6,11 +6,13 @@
 
 <h2><i class="fa fa-lg fa-book"></i> Books </h2>
 
-@using (Html.BeginForm("Search", "Books", FormMethod.Get, new { @class = "form-inline" }))
-{
-    <input type="text" , class="form-control" , name="bookTitle" , placeholder="Search Book Titles" />
-    <input type="submit" , class="btn btn-default" value="Search" />
-}
+    @using (Html.BeginForm("Search", "Books", FormMethod.Get, new { @class = "form-inline" }))
+    {
+        <input type="text" class="form-control"  size="30" name="bookTitle" placeholder="Search Titles, ISBN, or Class Room" />
+        <input type="submit" , class="btn btn-default" value="Search" />
+    }
+
+
 <br />
 <br />
 <p>
@@ -36,41 +38,49 @@
         <th>
             @Html.DisplayNameFor(model => model.Available)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassRoom)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Publisher)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @if(@item.Available) {
-                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
-                }
-                else {
-                <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
-                }
-            </td>
-            <td>
-                <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
-                <a href="@Url.Action("Details", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Details</a>
-                <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
+        </td>
+        <td>
+            @if (@item.Available)
+        {
+            <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+    }
+    else
+    {
+        <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
+}
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassRoom)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+            <a href="@Url.Action("Details", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+            <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+        </td>
+    </tr>
     }
 
 </table>

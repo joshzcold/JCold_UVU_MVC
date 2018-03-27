@@ -33,7 +33,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
         public ActionResult Search(string bookTitle)
         {
-            List<Books> bookList = db.Books.Where(x => x.Title.Contains(bookTitle)).ToList();
+            List<Books> bookList = db.Books.Where(x => x.Title.Contains(bookTitle) | x.ISBN.Contains(bookTitle) | x.ClassRoom.Contains(bookTitle) ).ToList();
             return View(bookList);
         }
 
@@ -63,7 +63,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available")] Books books)
+        public ActionResult Create([Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available,ClassRoom")] Books books)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available")] Books books)
+        public ActionResult Edit([Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available,ClassRoom")] Books books)
         {
             if (ModelState.IsValid)
             {

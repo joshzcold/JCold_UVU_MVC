@@ -33,7 +33,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
         public ActionResult Search(string supplyName)
         {
-            List<Supplies> supplyList = db.Supplies.Where(x => x.Name.Contains(supplyName)).ToList();
+            List<Supplies> supplyList = db.Supplies.Where(x => x.Name.Contains(supplyName) | x.ClassRoom.Contains(supplyName)).ToList();
             return View(supplyList);
         }
         // GET: Supplies/Details/5
@@ -62,7 +62,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SuppliesID,Name,Value,Number,Available")] Supplies supplies)
+        public ActionResult Create([Bind(Include = "SuppliesID,Name,Value,Number,Available,ClassRoom")] Supplies supplies)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SuppliesID,Name,Value,Number,Available")] Supplies supplies)
+        public ActionResult Edit([Bind(Include = "SuppliesID,Name,Value,Number,Available,ClassRoom")] Supplies supplies)
         {
             if (ModelState.IsValid)
             {

@@ -8,8 +8,8 @@
 
 @using (Html.BeginForm("Search", "Supplies", FormMethod.Get, new { @class = "form-inline" }))
 {
-    <input type="text" , class="form-control" , name="supplyName" , placeholder="Search Supply Name" />
-    <input type="submit" , class="btn btn-default" value="Search" />
+    <input type="text" class="form-control" size="30" name="supplyName" placeholder="Search Name, Class Room" />
+    <input type="submit" class="btn btn-default" value="Search" />
 }
 <br />
 <br />
@@ -30,6 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Available)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassRoom)
+        </th>
         <th></th>
     </tr>
 
@@ -45,13 +48,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Number)
             </td>
+
             <td>
-                @if(@item.Available) {
-                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                @if (@item.Available)
+                {
+                    <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
                 }
-                else {
-                <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
+                else
+                {
+                    <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
                 }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassRoom)
             </td>
             <td>
                 <a href="@Url.Action("Edit", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Edit</a>

@@ -10,8 +10,8 @@ namespace JCold_UVU_MVC_Inventory.Models
     {
         protected override void Seed(JCold_UVU_MVC_InventoryDb context)
         {
-            context.Books.Add(new Books { Title = "Harry Potter", Author = "Jk Rollowing", ISBN = "9788700631625", Number =7, Publisher = "Penguin" });
-            context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 8, Publisher = "O'Reiliy" });
+            context.Books.Add(new Books { Title = "Harry Potter", Author = "Jk Rollowing", ISBN = "9788700631625", Number =7, Publisher = "Penguin", ClassRoom = "INFO-4410" });
+            context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 8, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
             context.Departments.Add(new Department
             { DepName = "Computer Science", DepChair = "Keith Mulbery", DepChairEmail = "KM@uvu.edu",
                 Email = "CS@uvu.edu", Location = "CS401", Telephone = "801-919-5180", WebAddress = "CS.uvu.edu" });
@@ -28,8 +28,8 @@ namespace JCold_UVU_MVC_Inventory.Models
             context.Students.Add(new Students { StudentName = "Joshua Cold", StudentEmail = "10627512@my.uvu.edu", StudentPhone = "8015555555", UVUID = 10627512 });
             context.Students.Add(new Students { StudentName = "Cameron Pattberg", StudentEmail = "4568524@my.uvu.edu", StudentPhone = "555-555-5555", UVUID = 45685246 });
 
-            context.Supplies.Add(new Supplies { Name = "Laptop", Number = 2, Value = "$500" });
-            context.Supplies.Add(new Supplies { Name = "Protrator", Number = 3, Value = "$1000" });
+            context.Supplies.Add(new Supplies { Name = "Laptop", Number = 2, Value = "$500", ClassRoom="Med859" });
+            context.Supplies.Add(new Supplies { Name = "Protractor", Number = 3, Value = "$1000", ClassRoom = "Art452" });
 
         }
     }
