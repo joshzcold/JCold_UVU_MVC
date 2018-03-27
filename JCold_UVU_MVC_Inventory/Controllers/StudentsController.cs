@@ -17,7 +17,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            //TODO Fix this method for st.HasCheckedOutBooks
+
             var UpdateQuery =
                from chks in db.CheckOutBooks
                join st in db.Students
