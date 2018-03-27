@@ -13,7 +13,7 @@ namespace JCold_UVU_MVC_Inventory.Models
         [Required(ErrorMessage = "Provide a Student ID Number")]
         [Display(Name ="UVU ID")]
         [Range(10000000, 99999999)]
-        public virtual int UVUID { get; set; }
+        public virtual string UVUID { get; set; }
 
         [Required(ErrorMessage = "Provide a Student Name")]
         [Display(Name ="Student Name")]

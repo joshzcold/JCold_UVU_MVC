@@ -22,7 +22,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
         public ActionResult Search(string studentName)
         {
-            List<Students> studentList = db.Students.Where(x => x.StudentName.Contains(studentName)).ToList();
+            List<Students> studentList = db.Students.Where(x => x.StudentName.Contains(studentName) | x.UVUID.Contains(studentName)).ToList();
             return View(studentList);
         }
         // GET: Students/Details/5
