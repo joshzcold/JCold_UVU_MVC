@@ -56,7 +56,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                                      select new SelectListItem
                                      {
                                          Value = s.BooksID.ToString(),
-                                         Text = s.Title + ", ISBN: " + s.ISBN + ", Number: " + s.Number + "  "
+                                         Text = s.Title + ", ISBN: " + s.ISBN + ", Number: " + s.Number + ", Class Room: " + s.ClassRoom + " "
                                      };
 
             ViewBag.BooksID = new SelectList(selectListBooks, "Value", "Text");
@@ -119,7 +119,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                                   select new SelectListItem
                                   {
                                       Value = s.BooksID.ToString(),
-                                      Text = s.Title + ", ISBN: " + s.ISBN + ", Number: " + s.Number + "  "
+                                      Text = s.Title + ", ISBN: " + s.ISBN + ", Number: " + s.Number + ", Class Room: " + s.ClassRoom + " "
                                   };
             ViewBag.BooksID = new SelectList(selectListBooks, "Value", "Text", checkOutBook.BooksID);
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "DepName", checkOutBook.DepartmentID);

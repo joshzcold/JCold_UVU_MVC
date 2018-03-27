@@ -55,7 +55,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                                      select new SelectListItem
                                      {
                                          Value = s.SuppliesID.ToString(),
-                                         Text = s.Name + ", Value: " + s.Value + ", Number: " + s.Number + "  "
+                                         Text = s.Name + ", Value: " + s.Value + ", Number: " + s.Number + ", Class Room: " + s.ClassRoom + " "
                                      };
 
 
@@ -117,7 +117,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                                      select new SelectListItem
                                      {
                                          Value = s.SuppliesID.ToString(),
-                                         Text = s.Name + ", Value: " + s.Value + ", Number: " + s.Number + "  "
+                                         Text = s.Name + ", Value: " + s.Value + ", Number: " + s.Number + ", Class Room: " + s.ClassRoom + " "
                                      };
 
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "DepName", checkOutSupplies.DepartmentID);
