@@ -17,6 +17,18 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // GET: Students
         public ActionResult Index()
         {
+            //TODO Fix this method for st.HasCheckedOutBooks
+            var UpdateQuery =
+               from chks in db.CheckOutBooks
+               join st in db.Students
+               on chks.StudentsID equals st.StudentsID
+               where chks.StudentsID == st.StudentsID && chks.ReturnedBook == false
+               select st;
+
+            foreach (Students chks in UpdateQuery)
+            {
+                chks.HasCheckedOutBooks = true;
+            }
             return View(db.Students.ToList());
         }
 
