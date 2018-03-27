@@ -51,7 +51,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentsID,UVUID,StudentName,StudentEmail,StudentPhone")] Students students)
+        public ActionResult Create([Bind(Include = "StudentsID,UVUID,StudentName,StudentEmail,StudentPhone,HasCheckedOutBooks,HasCheckedOutSupplies")] Students students)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentsID,UVUID,StudentName,StudentEmail,StudentPhone")] Students students)
+        public ActionResult Edit([Bind(Include = "StudentsID,UVUID,StudentName,StudentEmail,StudentPhone,HasCheckedOutBooks,HasCheckedOutSupplies")] Students students)
         {
             if (ModelState.IsValid)
             {

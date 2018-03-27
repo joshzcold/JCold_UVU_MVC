@@ -26,5 +26,11 @@ namespace JCold_UVU_MVC_Inventory.Models
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public virtual string StudentPhone { get; set; }
+
+        [Display(Name ="Checked Books")]
+        public virtual bool HasCheckedOutBooks { get; set; } = false;
+
+        [Display(Name = "Checked Supplies")]
+        public virtual bool HasCheckedOutSupplies { get; set; } = false;
     }
 }

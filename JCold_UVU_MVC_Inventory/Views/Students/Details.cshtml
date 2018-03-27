@@ -41,6 +41,28 @@
         <dd>
             @Html.DisplayFor(model => model.StudentPhone)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HasCheckedOutBooks)
+        </dt>
+        <td>
+            @if(Model.HasCheckedOutBooks) {
+                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else {
+                <p>N/A</p>
+                }
+        </td>
+        <dt>
+            @Html.DisplayNameFor(model => model.HasCheckedOutSupplies)
+        </dt>
+        <td>
+            @if(Model.HasCheckedOutSupplies) {
+                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else {
+                <p>N/A</p>
+                }
+        </td>
 
     </dl>
 </div>
