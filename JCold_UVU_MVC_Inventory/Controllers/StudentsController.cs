@@ -70,7 +70,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                  join st in db.Students
                  on chks.StudentsID equals st.StudentsID join bk in db.Books
                  on chks.BooksID equals bk.BooksID
-                 where chks.StudentsID == st.StudentsID && chks.ReturnedBook == false
+                 where chks.StudentsID == id && chks.ReturnedBook == false
                  select new { bk.Title,bk.ISBN, bk.Number, bk.ClassRoom, chks.CheckedOutDate, chks.DueDate, chks.ReturnedDate };
 
             var CheckedSuppliesSelectQuery =
@@ -78,7 +78,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                  join st in db.Students
                  on chks.StudentsID equals st.StudentsID join bk in db.Supplies
                  on chks.SuppliesID equals bk.SuppliesID
-                 where chks.StudentsID == st.StudentsID && chks.ReturnedSupply == false
+                 where chks.StudentsID == id && chks.ReturnedSupply == false
                  select new { bk.Name,bk.Number, bk.Value, bk.ClassRoom, chks.CheckedOutDate, chks.DueDate, chks.ReturnedDate };
 
             ViewBag.CheckSuppliesQuery = CheckedSuppliesSelectQuery;
