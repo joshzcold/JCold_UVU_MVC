@@ -15,6 +15,8 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         private JCold_UVU_MVC_InventoryDb db = new JCold_UVU_MVC_InventoryDb();
 
         // GET: Books
+        //TODO make delete unavailable if a book is featured in checked out
+
         public ActionResult Index()
         {
             var UpdateQuery =
