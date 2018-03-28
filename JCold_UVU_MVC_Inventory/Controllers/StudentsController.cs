@@ -82,6 +82,8 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                 chks.HasCheckedOutSupplies = true;
             }
 
+            ViewBag.CheckBookCounter = UpdateQueryBooks.Count();
+            ViewBag.CheckSuppliesCounter = UpdateQuerySupplies.Count();
             // Save each change to database
             db.SaveChanges();
             return View(db.Students.ToList());
@@ -111,7 +113,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                  on chks.StudentsID equals st.StudentsID join bk in db.Books
                  on chks.BooksID equals bk.BooksID
                  where chks.StudentsID == id && chks.ReturnedBook == false
-                 select new { bk.Title,bk.ISBN, bk.Number, bk.ClassRoom, chks.CheckedOutDate, chks.DueDate, chks.ReturnedDate };
+                 select new { bk.Title,bk.ISBN, bk.Number, bk.ClassRoom, chks.Department.DepName, chks.CheckedOutDate, chks.DueDate, chks.ReturnedDate };
 
             var CheckedSuppliesSelectQuery =
                 from chks in db.CheckOutSupplies
@@ -119,7 +121,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                  on chks.StudentsID equals st.StudentsID join bk in db.Supplies
                  on chks.SuppliesID equals bk.SuppliesID
                  where chks.StudentsID == id && chks.ReturnedSupply == false
-                 select new { bk.Name,bk.Number, bk.Value, bk.ClassRoom, chks.CheckedOutDate, chks.DueDate, chks.ReturnedDate };
+                 select new { bk.Name,bk.Number, bk.Value, bk.ClassRoom, chks.Department.DepName, chks.CheckedOutDate, chks.DueDate, chks.ReturnedDate };
 
             ViewBag.CheckSuppliesQuery = CheckedSuppliesSelectQuery;
             ViewBag.CheckBookQuery = CheckedBooksSelectQuery;

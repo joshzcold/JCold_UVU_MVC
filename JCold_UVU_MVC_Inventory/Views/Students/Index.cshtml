@@ -59,7 +59,7 @@
         <td>
             @if (item.HasCheckedOutBooks)
             {
-                <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-outline-warning">Yes</a>
+                <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-outline-primary">@ViewBag.CheckBookCounter</a>
             }
             else
             {
@@ -69,7 +69,7 @@
         <td>
             @if (item.HasCheckedOutSupplies)
             {
-                <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-outline-warning">Yes</a>
+            <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-outline-primary">@ViewBag.CheckSuppliesCounter</a>
             }
             else
             {
