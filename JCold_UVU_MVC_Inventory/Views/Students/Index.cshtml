@@ -31,10 +31,12 @@
             @Html.DisplayNameFor(model => model.StudentPhone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HasCheckedOutBooks)
+            <i class="fa fa-lg fa-check"></i>
+            <i class="fa fa-lg fa-book"></i>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HasCheckedOutSupplies)
+            <i class="fa fa-lg fa-check"></i>
+            <i class="fa fa-lg fa-pencil"></i>
         </th>
         <th></th>
     </tr>
@@ -55,10 +57,24 @@
             @Html.DisplayFor(modelItem => item.StudentPhone)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HasCheckedOutBooks)
+            @if (item.HasCheckedOutBooks)
+            {
+                <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-outline-warning">Yes</a>
+            }
+            else
+            {
+                <span class="badge badge-light">No</span>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HasCheckedOutSupplies)
+            @if (item.HasCheckedOutSupplies)
+            {
+                <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-outline-warning">Yes</a>
+            }
+            else
+            {
+                <span class="badge badge-light">No</span>
+            }
         </td>
         <td>
             <a href="@Url.Action("Edit", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-light">Edit</a>

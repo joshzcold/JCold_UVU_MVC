@@ -17,14 +17,59 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // GET: Students
         public ActionResult Index()
         {
-
-            // TODO Add Query that will update HasCheckedBook to false when a book is returned or deleted. 
+            // Queries to check if Students have checkedout books and to switch a bool if true or false
             var UpdateQueryBooks =
                from chks in db.CheckOutBooks
                join st in db.Students
                on chks.StudentsID equals st.StudentsID
                where chks.StudentsID == st.StudentsID && chks.ReturnedBook == false
                select st;
+            foreach (Students chks in UpdateQueryBooks)
+            {
+                chks.HasCheckedOutBooks = true;
+            }
+
+            var ResetUpdateQueryBooksOnReturn =
+               from chks in db.CheckOutBooks
+               join st in db.Students
+               on chks.StudentsID equals st.StudentsID
+               where chks.ReturnedBook == true
+               select st;
+            foreach (Students chkb in ResetUpdateQueryBooksOnReturn)
+            {
+                chkb.HasCheckedOutBooks = false;
+            }
+
+            var ResetUpdateQueryBooksOnDelete =
+                from st in db.Students
+                where !(from ch in db.CheckOutBooks select ch.StudentsID).Contains(st.StudentsID)
+                select st;
+            foreach (Students chkb in ResetUpdateQueryBooksOnDelete)
+            {
+                chkb.HasCheckedOutBooks = false;
+            }
+
+
+            // Queries to check if Students have checkedout supplies and to switch a bool if true or false
+            var ResetUpdateQuerySuppliesOnReturn =
+               from chks in db.CheckOutSupplies
+               join st in db.Students
+               on chks.StudentsID equals st.StudentsID
+               where chks.ReturnedSupply == true
+               select st;
+            foreach (Students chkb in ResetUpdateQuerySuppliesOnReturn)
+            {
+                chkb.HasCheckedOutSupplies = false;
+            }
+
+            var ResetUpdateQuerySuppliesOnDelete =
+                from st in db.Students
+                where !(from ch in db.CheckOutSupplies select ch.StudentsID).Contains(st.StudentsID)
+                select st;
+            foreach (Students chkb in ResetUpdateQuerySuppliesOnDelete)
+            {
+                chkb.HasCheckedOutSupplies = false;
+            }
 
             var UpdateQuerySupplies =
                from chks in db.CheckOutSupplies
@@ -32,17 +77,12 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                on chks.StudentsID equals st.StudentsID
                where chks.StudentsID == st.StudentsID && chks.ReturnedSupply == false
                select st;
-
             foreach (Students chks in UpdateQuerySupplies)
             {
                 chks.HasCheckedOutSupplies = true;
             }
 
-            foreach (Students chks in UpdateQueryBooks)
-            {
-                chks.HasCheckedOutBooks = true;
-            }
-
+            // Save each change to database
             db.SaveChanges();
             return View(db.Students.ToList());
         }
