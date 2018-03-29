@@ -43,7 +43,7 @@
     <a href="@Url.Action("Create", "CheckOutBooks")" style="color: white" class="btn btn-primary">Check out</a>
 </p>
 
-@Html.Grid(Model).Columns(columns =>
+@(Html.Grid(Model).Columns(columns =>
      {
          columns.Add(c => c.BooksID).Titled("Book").Filterable(true);
          columns.Add(c => c.DepartmentID).Titled("Department").Filterable(true);
@@ -53,7 +53,7 @@
          columns.Add(c => c.ReturnedDate).Titled("Returned-Date").Filterable(true);
          columns.Add(c => c.CheckedOutDate).Titled("Checked-out-Date");
 
-     })
+     }))
 
 
 <br />

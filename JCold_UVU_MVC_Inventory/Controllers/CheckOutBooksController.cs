@@ -15,9 +15,12 @@ namespace JCold_UVU_MVC_Inventory.Controllers
     {
         private JCold_UVU_MVC_InventoryDb db = new JCold_UVU_MVC_InventoryDb();
 
+
         // GET: CheckOutBooks
         public ActionResult Index()
         {
+            
+
             var checkOutBooks = db.CheckOutBooks.Include(c => c.Books).Include(c => c.Department).Include(c => c.Students);
             return View(checkOutBooks.ToList());
         }
