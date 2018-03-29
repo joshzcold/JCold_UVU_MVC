@@ -362,6 +362,7 @@
     <Content Include="Views\CheckOutBooks\Details.cshtml" />
     <Content Include="Views\CheckOutBooks\Edit.cshtml" />
     <Content Include="Views\CheckOutBooks\Index.cshtml" />
+    <Content Include="Views\CheckOutBooks\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

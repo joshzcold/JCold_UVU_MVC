@@ -6,6 +6,15 @@
 
 <h2><i class="fa fa-lg fa-calendar-check-o"></i> Check out Books</h2>
 
+@using (Html.BeginForm("Search", "CheckOutBooks", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <input id="responsable" name="checkResp" value="false" type="checkbox" />
+    <h3>Filter by Checked out Books</h3>
+    <br />
+    <input type="submit" , class="btn btn-default btn-sm" value="Filter" />
+}
+
+
 <br />
 <br />
 <p>
@@ -37,41 +46,44 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Books.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department.DepName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Students.StudentName)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Books.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Students.StudentName)
+            </td>
 
-        <td>
-            @if(@item.ReturnedBook) {
-                <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+            <td>
+                @if (@item.ReturnedBook)
+                {
+                    <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
                 }
-                else {
-                <i class="fa fa-lg fa-times-circle" style="color: darkgoldenrod"></i>
+                else
+                {
+                    <i class="fa fa-lg fa-times-circle" style="color: darkgoldenrod"></i>
                 }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReturnedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckedOutDate)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
-            <a href="@Url.Action("Details", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Details</a>
-            <a href="@Url.Action("Delete", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
-        </td>
-    </tr>
-}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckedOutDate)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                <a href="@Url.Action("Details", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+                <a href="@Url.Action("Delete", "CheckOutBooks", new { id = item.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+            </td>
+        </tr>
+    }
 
 </table>

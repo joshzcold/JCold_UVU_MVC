@@ -19,7 +19,8 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         {
 
             Students students = db.Students.Find(id);
-            //TODO Figure out matching student IDs for the ViewBag.Counter Currently if there are two students in checkout book the counter will count both.
+            //TODO Figure out if counting the amount of checkedout books by StudentID is possible. 
+
             // Queries to check if Students have checkedout books and to switch a bool if true or false
             var UpdateQueryBooks =
                from chks in db.CheckOutBooks

@@ -22,6 +22,19 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(checkOutBooks.ToList());
         }
 
+        //public ActionResult Search(string bookTitle)
+        //{
+        //    List<Books> bookList = db.Books.Where(x => x.Title.Contains(bookTitle) | x.ISBN.Contains(bookTitle) | x.ClassRoom.Contains(bookTitle)).ToList();
+        //    return View(bookList);
+        //}
+
+        //TODO Filter by Checked out books
+        public ActionResult Search(string responsables, bool checkResp = true)
+        {
+            List<CheckOutBook> checkedoutbooklist = db.CheckOutBooks.Where(x => x.ReturnedBook.Equals(checkResp)).ToList();
+            return View(checkedoutbooklist);
+        }
+
         // GET: CheckOutBooks/Details/5
         public ActionResult Details(int? id)
         {
