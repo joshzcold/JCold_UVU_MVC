@@ -23,7 +23,7 @@ namespace JCold_UVU_MVC_Inventory
                 .AddColumns
                 (cols => {
                     //Add your columns here
-                    cols.Add("Book Name").WithValueExpression(p => p.Books.Title);
+                    cols.Add("Book Name").WithValueExpression(p => p.Books.Title.ToString());
                     cols.Add("Department Name").WithValueExpression(p => p.Department.DepName);
                     cols.Add("Student Name").WithValueExpression(p => p.Students.StudentName);
                     cols.Add("Returned Book").WithValueExpression(p => p.ReturnedBook ? "Yes" : "No");
@@ -38,8 +38,23 @@ namespace JCold_UVU_MVC_Inventory
                     // Use Entity Framework, a module from your IoC Container, or any other method.
                     // Return QueryResult object containing IEnumerable<YouModelItem>
 
+
+                    var options = context.QueryOptions;
                     var result = new QueryResult<CheckOutBook>();
-                    result.Items = db.CheckOutBooks.ToList();
+                    var query = db.CheckOutBooks;
+                    //if (!String.IsNullOrWhiteSpace(options.SortColumnName))
+                    //{
+                    //    switch (options.SortColumnName.ToLower())
+                    //    {
+                    //        case "firstname":
+                    //            query = query.OrderBy(p => p.Books.Title, options.SortDirection);
+                    //            break;
+                    //        case "lastname":
+                    //            query = query.OrderBy(p => p.Department.DepName, options.SortDirection);
+                    //            break;
+                    //    }
+                    //}
+                    result.Items = query.ToList();
 
                     return result;
 

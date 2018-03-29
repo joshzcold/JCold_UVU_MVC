@@ -3,46 +3,16 @@
 @{
     ViewBag.Title = "Book Check Out";
 }
-@using MVCGrid.Web
 
 
-<h2><i class="fa fa-lg fa-calendar-check-o"></i> Check out Books</h2>
+<h2><i class="fa fa-lg fa-calendar-check-o "></i> Check out Books</h2>
 
 <br />
 <br />
 <p>
     <a href="@Url.Action("Create", "CheckOutBooks")" style="color: white" class="btn btn-primary">Check out</a>
+    <a href="@Url.Action("Filter", "CheckOutBooks")" style="color: white" class="btn btn-primary">Filter</a>
 </p>
-
-
-<div class="well">
-    <div class="form-inline">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Book Title"
-                   data-mvcgrid-type="filter" data-mvcgrid-option="Book Name" />
-        </div>
-        <div class="form-group">
-
-
-            <input type="email" class="form-control" placeholder="Department Name"
-                   data-mvcgrid-type="filter" data-mvcgrid-option="Department Name" />
-        </div>
-        <div class="form-group">
-            <select class="form-control" data-mvcgrid-type="filter" data-mvcgrid-option="Returned Book">
-                <option value=""></option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-        </div>
-        <button type="button" class="btn btn-default" data-mvcgrid-apply-filter="click">Apply</button>
-    </div>
-</div>
-
-@Html.MVCGrid("CheckBookGrid")
-
-<br />
-<br />
-
 <table class="table">
     <tr>
         <th>

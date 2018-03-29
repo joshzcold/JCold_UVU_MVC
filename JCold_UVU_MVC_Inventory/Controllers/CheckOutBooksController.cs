@@ -31,6 +31,12 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                 return View(checkedoutbooklist);
         }
 
+        public ActionResult Filter()
+        {
+            var checkOutBooks = db.CheckOutBooks.Include(c => c.Books).Include(c => c.Department).Include(c => c.Students);
+            return View(checkOutBooks.ToList());
+        }
+
         // GET: CheckOutBooks/Details/5
         public ActionResult Details(int? id)
         {
