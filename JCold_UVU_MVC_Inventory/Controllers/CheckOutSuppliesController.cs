@@ -21,6 +21,12 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(checkOutSupplies.ToList());
         }
 
+        public ActionResult Filter()
+        {
+            var checkOutSupplies = db.CheckOutSupplies.Include(c => c.Department).Include(c => c.Students).Include(c => c.Supplies);
+            return View(checkOutSupplies.ToList());
+        }
+
         // GET: CheckOutSupplies/Details/5
         public ActionResult Details(int? id)
         {
