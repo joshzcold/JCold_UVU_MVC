@@ -17,6 +17,7 @@ namespace JCold_UVU_MVC_Inventory.Models
     
         public JCold_UVU_MVC_InventoryDb() : base("name=JCold_UVU_MVC_InventoryDb")
         {
+
         }
 
         public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.Department> Departments { get; set; }
