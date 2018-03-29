@@ -23,3 +23,33 @@
         <a href="@Url.Action("Index", "Departments")" style="color: white" class="btn btn-info btn-lg">Departments</a>
     </div>
 </div>
+
+
+<script>
+    jQuery(function () {
+
+        jQuery('#autocomplete').autocomplete({
+            source: ["ActionScript",
+                "Bootstrap",
+                "C",
+                "C++",
+                "Ecommerce",
+                "Jquery",
+                "Groovy",
+                "Java",
+                "JavaScript",
+                "Lua",
+                "Perl",
+                "Ruby",
+                "Scala",
+                "Swing",
+                "XHTML"]
+        });
+
+    });
+</script>
+
+
+<form>
+    <input id="autocomplete">
+</form>
