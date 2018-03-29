@@ -22,10 +22,10 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(checkOutBooks.ToList());
         }
 
-        public ActionResult Search(string responsables, bool checkResp = true)
+        public ActionResult Search(string checkoutbookstring, bool checkBookResp = true)
         {
-            List<CheckOutBook> checkedoutbooklist = db.CheckOutBooks.Where(x => x.ReturnedBook.Equals(checkResp)).ToList();
-            return View(checkedoutbooklist);
+                List<CheckOutBook> checkedoutbooklist = db.CheckOutBooks.Where(x => x.ReturnedBook.Equals(checkBookResp)).ToList();
+                return View(checkedoutbooklist);
         }
 
         // GET: CheckOutBooks/Details/5

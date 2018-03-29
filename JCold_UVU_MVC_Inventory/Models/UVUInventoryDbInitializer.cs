@@ -12,6 +12,9 @@ namespace JCold_UVU_MVC_Inventory.Models
         {
             context.Books.Add(new Books { Title = "Harry Potter", Author = "Jk Rollowing", ISBN = "9788700631625", Number =7, Publisher = "Penguin", ClassRoom = "INFO-4410" });
             context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 8, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
+            context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 7, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
+            context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 6, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
+            context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 5, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
             context.Departments.Add(new Department
             { DepName = "Computer Science", DepChair = "Keith Mulbery", DepChairEmail = "KM@uvu.edu",
                 Email = "CS@uvu.edu", Location = "CS401", Telephone = "801-919-5180", WebAddress = "CS.uvu.edu" });
