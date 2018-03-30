@@ -24,32 +24,41 @@
     </div>
 </div>
 
-
 <script>
-    jQuery(function () {
-
-        jQuery('#autocomplete').autocomplete({
-            source: ["ActionScript",
-                "Bootstrap",
-                "C",
-                "C++",
-                "Ecommerce",
-                "Jquery",
-                "Groovy",
-                "Java",
-                "JavaScript",
-                "Lua",
-                "Perl",
-                "Ruby",
-                "Scala",
-                "Swing",
-                "XHTML"]
+    $(function () {
+        var availableTags = [
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        $("#tags").autocomplete({
+            source: availableTags
         });
-
     });
 </script>
 
 
-<form>
-    <input id="autocomplete">
-</form>
+<div class="ui-widget">
+    <label for="tags">Tags: </label>
+    <input id="tags">
+</div>
+
