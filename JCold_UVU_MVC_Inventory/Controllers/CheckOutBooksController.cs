@@ -37,6 +37,16 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(checkOutBooks.ToList());
         }
 
+        [HttpPost]
+        public JsonResult Jquery(string Prefix)
+        {
+            var Books = (from c in db.Books
+                         where c.Title.ToLower().Contains(Prefix.ToLower())
+                         select new {c.BooksID, c.Title, c.ISBN, c.Number, c.ClassRoom });
+
+            return Json(Books, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: CheckOutBooks/Details/5
         public ActionResult Details(int? id)
         {
