@@ -38,13 +38,23 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         }
 
         [HttpPost]
-        public JsonResult ReturnBooks(string Prefix)
+        public JsonResult AutoCompleteBooks(string Prefix)
         {
             var Books = (from c in db.Books
                          where c.Title.ToLower().Contains(Prefix.ToLower())
                          select new {c.BooksID, c.Title, c.ISBN, c.Number, c.ClassRoom });
 
             return Json(Books, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AutoCompleteStudents(string Prefix)
+        {
+            var Students = (from c in db.Students
+                         where c.StudentName.ToLower().Contains(Prefix.ToLower())
+                         select new { c.StudentsID, c.StudentName, c.UVUID});
+
+            return Json(Students, JsonRequestBehavior.AllowGet);
         }
 
         // GET: CheckOutBooks/Details/5
@@ -104,9 +114,17 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
             if (ModelState.IsValid)
             {
-                db.CheckOutBooks.Add(checkOutBook);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.CheckOutBooks.Add(checkOutBook);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return Content("check out request was invalid go back and try again");
+                }
+                
             }
 
             ViewBag.BooksID = new SelectList(db.Books, "BooksID", "Title", checkOutBook.BooksID);
