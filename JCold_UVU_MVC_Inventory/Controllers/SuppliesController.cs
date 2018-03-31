@@ -38,7 +38,8 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         }
         public ActionResult Filter()
         {
-            return View();
+            var Supplies = db.Supplies;
+            return View(Supplies.ToList());
         }
 
         // GET: Supplies/Details/5

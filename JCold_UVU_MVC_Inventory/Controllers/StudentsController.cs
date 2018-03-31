@@ -99,7 +99,8 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
         public ActionResult Filter()
         {
-            return View();
+            var Students = db.Students;
+            return View(Students.ToList());
         }
 
         // GET: Students/Details/5

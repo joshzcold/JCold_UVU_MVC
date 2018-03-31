@@ -41,7 +41,8 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
         public ActionResult Filter()
         {
-            return View();
+            var Books = db.Books;
+            return View(Books.ToList());
         }
 
         // GET: Books/Details/5
