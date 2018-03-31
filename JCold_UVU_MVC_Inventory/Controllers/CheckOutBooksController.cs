@@ -41,7 +41,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         public JsonResult AutoCompleteBooks(string Prefix)
         {
             var Books = (from c in db.Books
-                         where c.Title.ToLower().Contains(Prefix.ToLower())
+                         where c.Title.ToLower().Contains(Prefix.ToLower()) | c.ClassRoom.ToLower().Contains(Prefix.ToLower())
                          select new {c.BooksID, c.Title, c.ISBN, c.Number, c.ClassRoom });
 
             return Json(Books, JsonRequestBehavior.AllowGet);
@@ -51,8 +51,8 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         public JsonResult AutoCompleteStudents(string Prefix)
         {
             var Students = (from c in db.Students
-                         where c.StudentName.ToLower().Contains(Prefix.ToLower())
-                         select new { c.StudentsID, c.StudentName, c.UVUID});
+                         where c.StudentName.ToLower().Contains(Prefix.ToLower()) | c.UVUID.ToLower().Contains(Prefix.ToLower())
+                            select new { c.StudentsID, c.StudentName, c.UVUID});
 
             return Json(Students, JsonRequestBehavior.AllowGet);
         }

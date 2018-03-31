@@ -27,6 +27,26 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(checkOutSupplies.ToList());
         }
 
+        [HttpPost]
+        public JsonResult AutoCompleteSupplies(string Prefix)
+        {
+            var Supplies = (from c in db.Supplies
+                         where c.Name.ToLower().Contains(Prefix.ToLower()) | c.ClassRoom.ToLower().Contains(Prefix.ToLower())
+                         select new { c.SuppliesID, c.Name, c.Number, c.Value, c.ClassRoom });
+
+            return Json(Supplies, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AutoCompleteStudents(string Prefix)
+        {
+            var Students = (from c in db.Students
+                            where c.StudentName.ToLower().Contains(Prefix.ToLower()) | c.UVUID.ToLower().Contains(Prefix.ToLower())
+                            select new { c.StudentsID, c.StudentName, c.UVUID });
+
+            return Json(Students, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: CheckOutSupplies/Details/5
         public ActionResult Details(int? id)
         {
@@ -84,9 +104,18 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CheckOutSupplies.Add(checkOutSupplies);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.CheckOutSupplies.Add(checkOutSupplies);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+
+                    return Content("check out request was invalid go back and try again");
+                }
+
             }
 
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "DepName", checkOutSupplies.DepartmentID);

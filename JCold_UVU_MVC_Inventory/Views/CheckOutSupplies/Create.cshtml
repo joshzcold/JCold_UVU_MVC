@@ -12,21 +12,89 @@
     <h4>Check out Supplies</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.StudentsID, "Student", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("StudentsID", null, "Select a Student", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.StudentsID, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
+    <!-- Begin Jquery ui supplies autocomplete-->
     <div class="form-group">
         @Html.LabelFor(model => model.SuppliesID, "Supply", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("SuppliesID", null, "Select a Supply", htmlAttributes: new { @class = "form-control" })
+            <input class="form-control" id="SuppliesID" placeholder="Search Supply Name/Class Room" />
+            @Html.HiddenFor(model => model.SuppliesID, new { @id = "hidden_supplyid" })
             @Html.ValidationMessageFor(model => model.SuppliesID, "", new { @class = "text-danger" })
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#SuppliesID").autocomplete({
+                        source: function (request, response) {
+                            $.ajax({
+                                url: "/CheckOutSupplies/AutoCompleteSupplies",
+                                type: "POST",
+                                dataType: "json",
+                                data: { Prefix: request.term },
+                                success: function (data) {
+                                    response($.map(data, function (item) {
+                                        return {
+                                            label: item.Name + ', Number: #' + item.Number + ', Class Room: ' + item.ClassRoom,
+                                            value: item.Name + ', Number: #' + item.Number + ', Class Room: ' + item.ClassRoom,
+                                            id: $('#hidden_supplyid').val(item.SuppliesID)
+                                        };
+                                    }))
+
+                                }
+                            })
+                        },
+                        messages: {
+                            noResults: "",
+                            results: function (count) {
+                                return count + (count > 1 ? ' results' : ' result ') + ' found';
+                            }
+                        }
+                    });
+                })
+            </script>
         </div>
     </div>
+    <!-- End Jquery ui supplies autocomplete-->
+    <!-- Begin Jquery ui students autocomplete-->
+    <div class="form-group">
+        @Html.LabelFor(model => model.StudentsID, "Student", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input class="form-control" id="StudentsID" placeholder="Search Student Name/UVUID" />
+            @Html.HiddenFor(model => model.StudentsID, new { @id = "hidden_studentid" })
+            @Html.ValidationMessageFor(model => model.StudentsID, "", new { @class = "text-danger" })
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#StudentsID").autocomplete({
+                        source: function (request, response) {
+                            $.ajax({
+                                url: "/CheckOutSupplies/AutoCompleteStudents",
+                                type: "POST",
+                                dataType: "json",
+                                data: { Prefix: request.term },
+                                success: function (data) {
+                                    response($.map(data, function (item) {
+                                        return {
+                                            label: item.StudentName + ', UVUID: ' + item.UVUID,
+                                            value: item.StudentName + ', UVUID: ' + item.UVUID,
+                                            id: $('#hidden_studentid').val(item.StudentsID)
+                                        };
+                                    }))
+
+                                }
+                            })
+                        },
+                        messages: {
+                            noResults: "",
+                            results: function (count) {
+                                return count + (count > 1 ? ' results' : ' result ') + ' found';
+                            }
+                        }
+                    });
+                })
+            </script>
+        </div>
+    </div>
+    <!-- End Jquery ui students autocomplete-->
 
     <div class="form-group">
         @Html.LabelFor(model => model.DepartmentID, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,6 +109,11 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.CheckedOutDate, "", new { @class = "text-danger" })
+            <script>
+                $(function () {
+                    $("#DueDate").datepicker();
+                });
+            </script>
         </div>
     </div>
 
@@ -49,6 +122,11 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.CheckedOutDate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.CheckedOutDate, "", new { @class = "text-danger" })
+            <script>
+                $(function () {
+                    $("#CheckedOutDate").datepicker();
+                });
+            </script>
         </div>
     </div>
 

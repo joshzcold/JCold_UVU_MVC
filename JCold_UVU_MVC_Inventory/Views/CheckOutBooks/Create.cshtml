@@ -5,53 +5,6 @@
 }
 
 
-
-
-
-<script>
-    $(document).ready(function () {
-        $("#autocomplete").focus(function () {
-            if ($(this).val() == 'Enter your name') {
-                $(this).val("");
-            }
-        });
-        $("#autocomplete").blur(function () {
-            if ($(this).val() == '') {
-                $(this).val("Enter your name");
-            }
-        });
-        $("#autocomplete").autocomplete({
-            select: function (event, ui) {
-                $(this).val(ui.item.label);
-                $("input[id*=selectedValue]").val(ui.item.value);//Saving the selected value in hidden field
-                //                    __doPostBack($("input[id*=btn]").attr("id"), "OnClick")
-            },
-            source: function (request, response) {
-                response($.map(dataArray, function (item) {
-                    if (item.label.indexOf($("#autocomplete").val()) == 0) {
-                        return {
-                            label: item.label,
-                            value: item.value
-                        }
-                    }
-                }))
-            },
-            minLength: 1
-        });
-
-    });
-</script>
-
-<div>
-    <asp:HiddenField ID="selectedValue" runat="server" />
-    <asp:TextBox ID="autocomplete" runat="server" Text="Enter your name" />
-    <asp:Button id="btn" runat="server" Text="My button" onclick="btn_Click" />
-    <a href="#">reset</a>
-</div>
-
-
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -61,11 +14,11 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <!-- Begin Jquery ui students autocomplete-->
+    <!-- Begin Jquery ui books autocomplete-->
     <div class="form-group">
         @Html.LabelFor(model => model.BooksID, "Book", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input class="form-control" id="BooksID" placeholder="Search Book Titles" />
+            <input class="form-control" id="BooksID" placeholder="Search Book Titles/Class Room" />
             @Html.HiddenFor(model => model.BooksID, new { @id = "hidden_bookid" })
             @Html.ValidationMessageFor(model => model.BooksID, "", new { @class = "text-danger" })
 
@@ -101,12 +54,12 @@
             </script>
         </div>
     </div>
-    <!-- End Jquery ui students autocomplete-->
-    <!-- Begin Jquery ui books autocomplete-->
+    <!-- End Jquery ui books autocomplete-->
+    <!-- Begin Jquery ui students autocomplete-->
     <div class="form-group">
         @Html.LabelFor(model => model.StudentsID, "Student", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input class="form-control" id="StudentsID" placeholder="Search Student Names" />
+            <input class="form-control" id="StudentsID" placeholder="Search Student Name/UVUID" />
             @Html.HiddenFor(model => model.StudentsID, new { @id = "hidden_studentid" })
             @Html.ValidationMessageFor(model => model.StudentsID, "", new { @class = "text-danger" })
 
@@ -142,7 +95,7 @@
             </script>
         </div>
     </div>
-    <!-- End Jquery ui books autocomplete-->
+    <!-- End Jquery ui students autocomplete-->
 
     <div class="form-group">
         @Html.LabelFor(model => model.DepartmentID, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
