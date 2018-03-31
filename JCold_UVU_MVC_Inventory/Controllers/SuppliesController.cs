@@ -36,6 +36,11 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             List<Supplies> supplyList = db.Supplies.Where(x => x.Name.Contains(supplyName) | x.ClassRoom.Contains(supplyName)).ToList();
             return View(supplyList);
         }
+        public ActionResult Filter()
+        {
+            return View();
+        }
+
         // GET: Supplies/Details/5
         public ActionResult Details(int? id)
         {

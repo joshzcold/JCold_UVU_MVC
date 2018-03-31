@@ -96,6 +96,12 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             List<Students> studentList = db.Students.Where(x => x.StudentName.Contains(studentName) | x.UVUID.Contains(studentName)).ToList();
             return View(studentList);
         }
+
+        public ActionResult Filter()
+        {
+            return View();
+        }
+
         // GET: Students/Details/5
         public ActionResult Details(int? id)
         {

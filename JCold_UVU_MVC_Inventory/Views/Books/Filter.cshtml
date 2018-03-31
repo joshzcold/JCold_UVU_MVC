@@ -1,0 +1,36 @@
+﻿@model IEnumerable<JCold_UVU_MVC_Inventory.Models.Books>
+
+@{
+    ViewBag.Title = "Filter";
+}
+
+@using GridMvc.Html
+
+<h2><i class="fa fa-lg fa-search "></i>Filter</h2>
+<br />
+<br />
+<a href="@Url.Action("Create", "CheckOutBooks")" style="color: white" class="btn btn-primary">Check out</a>
+<a href="@Url.Action("Index", "CheckOutBooks")" style="color: white" class="btn btn-secondary">Back</a>
+<br />
+<p></p>
+
+@Html.Grid(Model).Columns(c =>
+{
+    c.Add(d => d.Books.Title).Titled("Book");
+    c.Add(d => d.Books.ClassRoom).Titled("Class Room");
+    c.Add(d => d.Books.Number).Titled("#");
+    c.Add(d => d.Department.DepName).Titled("Department");
+    c.Add(d => d.Students.StudentName).Titled("Student");
+    c.Add(d => d.ReturnedBook).Titled("Returned");
+    c.Add(d => d.DueDate).Titled("Due Date");
+    c.Add(d => d.ReturnedDate).Titled("Returned Date");
+    c.Add(d => d.CheckedOutDate).Titled("Checked out Date");
+    c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
+@<b>
+    <a href="@Url.Action("Edit", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
+    <a href="@Url.Action("Details", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa fa-lg fa-info-circle"></i></a>
+    <a href="@Url.Action("Delete", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa fa-lg fa-times-circle"></i></a>
+</b>));
+        }).Sortable(true).Filterable(true).WithPaging(10)
+
+

@@ -39,6 +39,11 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(bookList);
         }
 
+        public ActionResult Filter()
+        {
+            return View();
+        }
+
         // GET: Books/Details/5
         public ActionResult Details(int? id)
         {

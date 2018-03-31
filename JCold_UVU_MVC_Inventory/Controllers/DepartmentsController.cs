@@ -19,6 +19,12 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         {
             return View(db.Departments.ToList());
         }
+        public ActionResult Filter()
+        {
+            var Departments = db.Departments;
+            return View(Departments.ToList());
+        }
+
 
         // GET: Departments/Details/5
         public ActionResult Details(int? id)
