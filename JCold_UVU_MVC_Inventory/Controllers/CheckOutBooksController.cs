@@ -38,7 +38,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         }
 
         [HttpPost]
-        public JsonResult Jquery(string Prefix)
+        public JsonResult ReturnBooks(string Prefix)
         {
             var Books = (from c in db.Books
                          where c.Title.ToLower().Contains(Prefix.ToLower())

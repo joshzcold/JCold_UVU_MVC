@@ -8,6 +8,49 @@
 
 
 
+<script>
+    $(document).ready(function () {
+        $("#autocomplete").focus(function () {
+            if ($(this).val() == 'Enter your name') {
+                $(this).val("");
+            }
+        });
+        $("#autocomplete").blur(function () {
+            if ($(this).val() == '') {
+                $(this).val("Enter your name");
+            }
+        });
+        $("#autocomplete").autocomplete({
+            select: function (event, ui) {
+                $(this).val(ui.item.label);
+                $("input[id*=selectedValue]").val(ui.item.value);//Saving the selected value in hidden field
+                //                    __doPostBack($("input[id*=btn]").attr("id"), "OnClick")
+            },
+            source: function (request, response) {
+                response($.map(dataArray, function (item) {
+                    if (item.label.indexOf($("#autocomplete").val()) == 0) {
+                        return {
+                            label: item.label,
+                            value: item.value
+                        }
+                    }
+                }))
+            },
+            minLength: 1
+        });
+
+    });
+</script>
+
+<div>
+    <asp:HiddenField ID="selectedValue" runat="server" />
+    <asp:TextBox ID="autocomplete" runat="server" Text="Enter your name" />
+    <asp:Button id="btn" runat="server" Text="My button" onclick="btn_Click" />
+    <a href="#">reset</a>
+</div>
+
+
+
 
 @using (Html.BeginForm())
 {
@@ -28,14 +71,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.BooksID, "Book", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.BooksID, new { htmlAttributes = new { @class = "form-control" } })
+                <input class="form-control" id="BooksID" placeholder="Search Book Titles"/>
+                @Html.HiddenFor(model => model.BooksID, new { @id = "hidden_bookid" })
 
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#BooksID").autocomplete({
                             source: function (request, response) {
                                 $.ajax({
-                                    url: "/CheckOutBooks/Jquery",
+                                    url: "/CheckOutBooks/ReturnBooks",
                                     type: "POST",
                                     dataType: "json",
                                     data: { Prefix: request.term },
@@ -43,7 +87,8 @@
                                         response($.map(data, function (item) {
                                             return {
                                                 label: item.Title + ', ISBN: ' + item.ISBN + ', Number: #' + item.Number + ', Class Room: ' + item.ClassRoom,
-                                                value: item.BooksID
+                                                value: item.Title + ', ISBN: ' + item.ISBN + ', Number: #' + item.Number + ', Class Room: ' + item.ClassRoom,
+                                                id: $('#hidden_bookid').val(item.BooksID)
                                             };
                                         }))
 
@@ -59,6 +104,9 @@
                         });
                     })
                 </script>
+
+
+
             </div>
         </div>
 
