@@ -6,11 +6,11 @@
 
 <h2><i class="fa fa-lg fa-book"></i> Books </h2>
 
-    @using (Html.BeginForm("Search", "Books", FormMethod.Get, new { @class = "form-inline" }))
-    {
-        <input type="text" class="form-control"  size="30" name="bookTitle" placeholder="Search Titles, ISBN, or Class Room" />
-        <input type="submit" , class="btn btn-default" value="Search" />
-    }
+@using (Html.BeginForm("Search", "Books", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <input type="text" class="form-control" size="30" name="bookTitle" placeholder="Search Titles, ISBN, or Class Room" />
+    <input type="submit" , class="btn btn-default" value="Search" />
+}
 
 
 <br />
@@ -21,6 +21,9 @@
 </p>
 <table class="table">
     <tr>
+        @*<th>
+            Cover
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -47,41 +50,51 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ISBN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Publisher)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Number)
-        </td>
-        <td>
-            @if (@item.Available)
-        {
-            <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
-    }
-    else
-    {
-        <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
-}
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClassRoom)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
-            <a href="@Url.Action("Details", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Details</a>
-            <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
-        </td>
-    </tr>
+        <tr>
+            @*<td>
+                <div class=" clearfix">
+                    @if (item.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
+                    {
+                        <p>
+                            <img class="img-fluid" src="~/File?id=@item.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="60" />
+                        </p>
+                    }
+                </div>
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @if (@item.Available)
+                {
+                    <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else
+                {
+                    <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassRoom)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                <a href="@Url.Action("Details", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+                <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+            </td>
+        </tr>
     }
 
 </table>
