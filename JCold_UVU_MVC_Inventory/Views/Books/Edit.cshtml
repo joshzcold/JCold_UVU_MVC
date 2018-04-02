@@ -21,9 +21,6 @@
         @if (Model.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
         {
             <p>
-                Cover
-            </p>
-            <p>
                 <img class="img-fluid" src="~/File?id=@Model.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="250" />
             </p>
         }
