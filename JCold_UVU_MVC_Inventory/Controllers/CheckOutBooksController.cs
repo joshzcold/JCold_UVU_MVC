@@ -37,6 +37,8 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(checkOutBooks.ToList());
         }
 
+
+        
         [HttpPost]
         public JsonResult AutoCompleteBooks(string Prefix)
         {
