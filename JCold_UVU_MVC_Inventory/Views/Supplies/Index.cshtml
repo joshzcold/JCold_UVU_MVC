@@ -19,6 +19,9 @@
 </p>
 <table class="table">
     <tr>
+        @*<th>
+                Picture
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -40,6 +43,16 @@
     @foreach (var item in Model)
     {
         <tr>
+            @*<td>
+                    <div class=" clearfix">
+                        @if (item.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
+                        {
+                            <p>
+                                <img class="img-fluid" src="~/File?id=@item.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="60" />
+                            </p>
+                        }
+                    </div>
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

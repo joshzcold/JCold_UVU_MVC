@@ -17,5 +17,6 @@ namespace JCold_UVU_MVC_Inventory.Models
         public bool Available { get; set; } = true;
         [Display(Name = "Class Room")]
         public string ClassRoom { get; set; }
+        public virtual ICollection<File> Files { get; set; }
     }
 }
