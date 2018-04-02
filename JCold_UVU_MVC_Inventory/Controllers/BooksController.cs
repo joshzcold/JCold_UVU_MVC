@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -52,7 +53,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Books books = db.Books.Find(id);
+            Books books = db.Books.Include(x => x.Files).SingleOrDefault(x => x.BooksID == id);
             if (books == null)
             {
                 return HttpNotFound();
@@ -71,13 +72,37 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available,ClassRoom")] Books books)
+        public ActionResult Create([Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available,ClassRoom")] Books books, HttpPostedFileBase upload)
         {
-            if (ModelState.IsValid)
+            // function to add photo to book id
+            try
             {
-                db.Books.Add(books);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+                        var cover = new File
+                        {
+                            FileName = System.IO.Path.GetFileName(upload.FileName),
+                            FileType = FileType.Photo,
+                            ContentType = upload.ContentType
+                        };
+
+                        using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                        {
+                            cover.Content = reader.ReadBytes(upload.ContentLength);
+                        }
+                        books.Files = new List<File> { cover };
+                    }
+
+                    db.Books.Add(books);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (RetryLimitExceededException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. try again.");
             }
 
             return View(books);
@@ -90,7 +115,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Books books = db.Books.Find(id);
+            Books books = db.Books.Include(x => x.Files).SingleOrDefault(x => x.BooksID == id);
             if (books == null)
             {
                 return HttpNotFound();
@@ -103,15 +128,61 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available,ClassRoom")] Books books)
+        public ActionResult Edit(int? id,[Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available,ClassRoom")] Books books, HttpPostedFileBase upload)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                db.Entry(books).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(books);
+            // Very long function to detect if a photo exists on this book id. Delete it then replace it will the supplied photo.
+            var updateBook = db.Books.Find(books.BooksID);
+
+            if (TryUpdateModel(updateBook, "",
+        new string[] { "BooksID","Title","ISBN","Author","Publisher","Number","Available","ClassRoom" }))
+            {
+
+            }
+
+                if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+                        if (updateBook.Files.Any(x => x.FileType == FileType.Photo))
+                        {
+                            db.Files.Remove(updateBook.Files.First(x => x.FileType == FileType.Photo));
+                            
+                        }
+
+                        var photo = new File
+                        {
+                            FileName = System.IO.Path.GetFileName(upload.FileName),
+                            FileType = FileType.Photo,
+                            ContentType = upload.ContentType
+                        };
+                        using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                        {
+                            photo.Content = reader.ReadBytes(upload.ContentLength);
+                        }
+
+                        updateBook.Files = new List<File> {photo};
+
+
+                        db.Entry(updateBook).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (RetryLimitExceededException)
+                {
+                    ModelState.AddModelError("", "Unable to add a profile image.");
+                }
+
+            }
+            db.Entry(updateBook).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Books/Delete/5

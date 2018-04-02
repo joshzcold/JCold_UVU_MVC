@@ -8,28 +8,28 @@ namespace JCold_UVU_MVC_Inventory.Models
 {
     public class Department
     {
-        public virtual int DepartmentID { get; set; }
+        public int DepartmentID { get; set; }
         [Required(ErrorMessage ="Provide a Department Name")]
         [Display(Name ="Department Name")]
 
-        public virtual string DepName { get; set; }
+        public string DepName { get; set; }
 
-        public virtual string Location { get; set; }
+        public string Location { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        public virtual string Telephone { get; set; }
+        public string Telephone { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        public virtual string Email { get; set; }
+        public string Email { get; set; }
 
         [Display(Name ="Website")]
-        public virtual string WebAddress { get; set; }
+        public string WebAddress { get; set; }
 
         [Display(Name ="Department Chair")]
-        public virtual string DepChair { get; set; }
+        public string DepChair { get; set; }
 
         [Display(Name ="Department Chair Email")]
         [DataType(DataType.EmailAddress)]
-        public virtual string DepChairEmail { get; set; }
+        public string DepChairEmail { get; set; }
     }
 }

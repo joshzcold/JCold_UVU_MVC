@@ -204,6 +204,7 @@
     <Compile Include="Controllers\CheckOutBooksController.cs" />
     <Compile Include="Controllers\CheckOutSuppliesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -216,6 +217,8 @@
     <Compile Include="Models\CheckOutBook.cs" />
     <Compile Include="Models\CheckOutSupplies.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JCold_UVU_MVC_InventoryDb.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -432,6 +435,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

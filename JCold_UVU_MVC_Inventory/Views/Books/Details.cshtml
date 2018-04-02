@@ -9,6 +9,21 @@
 <div>
     <h4>Books</h4>
     <hr />
+    <div class=" clearfix">
+        @if (Model.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
+        {
+            <dt>
+                Photo
+            </dt>
+            <dd>
+                <img class="visible-xs visible-sm" src="~/File?id=@Model.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="200" />
+                <img class="visible-md" src="~/File?id=@Model.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="400" />
+                <img class="visible-lg" src="~/File?id=@Model.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="600" />
+
+            </dd>
+        }
+    </div>
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)

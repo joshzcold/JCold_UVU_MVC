@@ -9,22 +9,22 @@ namespace JCold_UVU_MVC_Inventory.Models
 {
     public class CheckOutSupplies
     {
-        public virtual int CheckOutSuppliesID { get; set; }
-        public virtual int StudentsID { get; set; }
-        public virtual int SuppliesID { get; set; }
-        public virtual int DepartmentID { get; set; }
+        public int CheckOutSuppliesID { get; set; }
+        public int StudentsID { get; set; }
+        public int SuppliesID { get; set; }
+        public int DepartmentID { get; set; }
         [Column(TypeName = "datetime2")]
-        public virtual DateTime DueDate { get; set; }
+        public DateTime DueDate { get; set; }
         [Display(Name ="Returned Supply")]
-        public virtual bool ReturnedSupply { get; set; }
+        public bool ReturnedSupply { get; set; }
         [Column(TypeName = "datetime2")]
         [Display(Name ="Returned Date")]
-        public virtual DateTime? ReturnedDate { get; set; }
+        public DateTime? ReturnedDate { get; set; }
         [Column(TypeName = "datetime2")]
         [Display(Name ="Check out Date")]
-        public virtual DateTime CheckedOutDate { get; set; }
-        public virtual Students Students { get; set; }
-        public virtual Supplies Supplies { get; set; }
-        public virtual Department Department { get; set; }
+        public DateTime CheckedOutDate { get; set; }
+        public Students Students { get; set; }
+        public Supplies Supplies { get; set; }
+        public Department Department { get; set; }
     }
 }

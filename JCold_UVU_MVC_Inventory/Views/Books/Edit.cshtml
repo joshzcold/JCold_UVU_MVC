@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Books", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -16,6 +16,29 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.BooksID)
+
+    <div class=" clearfix">
+        @if (Model.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
+        {
+            <p>
+                Photo
+            </p>
+            <p>
+                <img class="visible-xs visible-sm" src="~/File?id=@Model.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="200" />
+                <img class="visible-md" src="~/File?id=@Model.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="400" />
+                <img class="visible-lg" src="~/File?id=@Model.Files.First(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo).FileId" alt="Profile Image" width="600" />
+
+            </p>
+        }
+    </div>
+    <div class="form-group">
+        @Html.Label("Cover", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" id="Cover" name="upload" />
+        </div>
+    </div>
+
+    <hr />
 
     <div class="form-group">
         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
