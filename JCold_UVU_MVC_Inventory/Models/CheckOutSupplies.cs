@@ -23,8 +23,8 @@ namespace JCold_UVU_MVC_Inventory.Models
         [Column(TypeName = "datetime2")]
         [Display(Name ="Check out Date")]
         public DateTime CheckedOutDate { get; set; }
-        public Students Students { get; set; }
-        public Supplies Supplies { get; set; }
-        public Department Department { get; set; }
+        public virtual Students Students { get; set; }
+        public virtual Supplies Supplies { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

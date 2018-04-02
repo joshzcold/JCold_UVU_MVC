@@ -24,8 +24,8 @@ namespace JCold_UVU_MVC_Inventory.Models
         [Column(TypeName = "datetime2")]
         [Display(Name ="Checked out Date")]
         public DateTime CheckedOutDate { get; set; }
-        public Students Students { get; set; }
-        public Books Books { get; set; }
-        public Department Department { get; set; }
+        public virtual Students Students { get; set; }
+        public virtual Books Books { get; set; }
+        public virtual Department Department { get; set; }
     }
 }
