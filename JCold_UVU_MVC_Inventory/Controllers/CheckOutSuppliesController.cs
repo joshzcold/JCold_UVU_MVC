@@ -28,7 +28,6 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(checkOutSupplies.ToList());
         }
 
-        //TODO fix the match so that we can have searching but the contains statment will be more stengent 
         [HttpPost]
         public JsonResult AutoCompleteSupplies(string Prefix)
         {
