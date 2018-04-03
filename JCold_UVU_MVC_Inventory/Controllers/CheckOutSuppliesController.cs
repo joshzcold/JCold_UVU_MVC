@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -111,17 +112,17 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch
+                catch(DbEntityValidationException ex)
                 {
 
-                    return Content("check out request was invalid go back and try again");
+                    return Content("check out request was invalid go back and try again" + ex);
                 }
 
             }
 
+            ViewBag.SuppliesID = new SelectList(db.Supplies, "SuppliesID", "Name", checkOutSupplies.SuppliesID);
             ViewBag.DepartmentID = new SelectList(db.Departments, "DepartmentID", "DepName", checkOutSupplies.DepartmentID);
             ViewBag.StudentsID = new SelectList(db.Students, "StudentsID", "StudentName", checkOutSupplies.StudentsID);
-            ViewBag.SuppliesID = new SelectList(db.Supplies, "SuppliesID", "Name", checkOutSupplies.SuppliesID);
             return View(checkOutSupplies);
         }
 

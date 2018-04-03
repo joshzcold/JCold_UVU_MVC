@@ -11,10 +11,10 @@ namespace JCold_UVU_MVC_Inventory.Models
         protected override void Seed(JCold_UVU_MVC_InventoryDb context)
         {
             context.Books.Add(new Books { Title = "Harry Potter", Author = "Jk Rollowing", ISBN = "9788700631625", Number =7, Publisher = "Penguin", ClassRoom = "INFO-4410" });
-            context.Books.Add(new Books { Title = "Introducing PHP", Author = "Ethan Bradberry", ISBN = "9788478456789", Number = 8, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
-            context.Books.Add(new Books { Title = "The Wind and The Willows", Author = "Bruce Bradberry", ISBN = "9784567888566", Number = 7, Publisher = "O'Woah", ClassRoom = "INFO-2210" });
-            context.Books.Add(new Books { Title = "Coding For Smarties", Author = "Peter Frog", ISBN = "9711178888566", Number = 6, Publisher = "Willy Wonka", ClassRoom = "INFO-1120" });
-            context.Books.Add(new Books { Title = "Coding For Dummies", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 5, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
+            context.Books.Add(new Books { Title = "test1", Author = "Ethan Bradberry", ISBN = "9788478456789", Number = 8, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
+            context.Books.Add(new Books { Title = "test2", Author = "Bruce Bradberry", ISBN = "9784567888566", Number = 7, Publisher = "O'Woah", ClassRoom = "INFO-2210" });
+            context.Books.Add(new Books { Title = "test3", Author = "Peter Frog", ISBN = "9711178888566", Number = 6, Publisher = "Willy Wonka", ClassRoom = "INFO-1120" });
+            context.Books.Add(new Books { Title = "test4", Author = "Ethan Bradberry", ISBN = "9788478888566", Number = 5, Publisher = "O'Reiliy", ClassRoom = "INFO-3340" });
             context.Departments.Add(new Department
             { DepName = "Computer Science", DepChair = "Keith Mulbery", DepChairEmail = "KM@uvu.edu",
                 Email = "CS@uvu.edu", Location = "CS401", Telephone = "801-919-5180", WebAddress = "CS.uvu.edu" });

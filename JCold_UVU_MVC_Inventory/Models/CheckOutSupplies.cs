@@ -10,7 +10,7 @@ namespace JCold_UVU_MVC_Inventory.Models
     public class CheckOutSupplies
     {
         public int CheckOutSuppliesID { get; set; }
-        public int StudentsID { get; set; }
+        public int? StudentsID { get; set; }
         public int SuppliesID { get; set; }
         public int DepartmentID { get; set; }
         [Column(TypeName = "datetime2")]

@@ -36,7 +36,7 @@
                                         return {
                                             label: item.Title + ', ISBN: ' + item.ISBN + ', Number: #' + item.Number + ', Class Room: ' + item.ClassRoom,
                                             value: item.Title + ', ISBN: ' + item.ISBN + ', Number: #' + item.Number + ', Class Room: ' + item.ClassRoom,
-                                            id: $('#hidden_bookid').val(item.BooksID)
+                                            id: item.BooksID
                                         };
                                     }))
 
@@ -48,6 +48,9 @@
                             results: function (count) {
                                 return count + (count > 1 ? ' results' : ' result ') + ' found';
                             }
+                        },
+                        select: function (event, ui) {
+                            $('#hidden_bookid').val(ui.item.id)
                         }
                     });
                 })
@@ -77,7 +80,7 @@
                                         return {
                                             label: item.StudentName + ', UVUID: ' + item.UVUID,
                                             value: item.StudentName + ', UVUID: ' + item.UVUID,
-                                            id: $('#hidden_studentid').val(item.StudentsID)
+                                            id: item.StudentsID
                                         };
                                     }))
 
@@ -89,6 +92,9 @@
                             results: function (count) {
                                 return count + (count > 1 ? ' results' : ' result ') + ' found';
                             }
+                        },
+                        select: function (event, ui) {
+                            $('#hidden_studentid').val(ui.item.id)
                         }
                     });
                 })
