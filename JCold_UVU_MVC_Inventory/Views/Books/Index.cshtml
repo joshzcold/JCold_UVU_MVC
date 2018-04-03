@@ -93,6 +93,11 @@
                 <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
                 <a href="@Url.Action("Details", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Details</a>
                 <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+
+                @if (item.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
+                {
+                   <i class="fa fa-camera"></i>
+                }
             </td>
         </tr>
     }
