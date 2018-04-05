@@ -56,6 +56,7 @@ namespace JCold_UVU_MVC_Inventory.Models
             var user4 = new ApplicationUser { UserName = "WoodAllJohnny@yahoo.com", Email = "WoodAllJohnny@yahoo.com", BirthDate = new DateTime(1985, 2, 4), UserRoleId = 1, FirstName = "Johnny", LastName = "WoodAll" };
             // I assumed we would want this user to be the one to edit values because its email says dmmpost. 
             var user5 = new ApplicationUser { UserName = "admin@uvu.edu", Email = "admin@uvu.edu", BirthDate = new DateTime(1985, 2, 4), UserRoleId = 2, FirstName = "UVU", LastName = "Admin" };
+            var user6 = new ApplicationUser { UserName = "admin2@uvu.edu", Email = "admin2@uvu.edu", BirthDate = new DateTime(1985, 2, 4), UserRoleId = 2, FirstName = "UVU", LastName = "Admin" };
 
             userManager.Create(user0, "Control123!");
             userManager.Create(user1, "Control123!");
@@ -63,10 +64,12 @@ namespace JCold_UVU_MVC_Inventory.Models
             userManager.Create(user3, "Control123!");
             userManager.Create(user4, "Control123!");
             userManager.Create(user5, "Control123!");
+            userManager.Create(user6, "Control123!");
 
             roleManager.Create(new IdentityRole("canEdit"));
             // Changed which user can edit values
             userManager.AddToRole(user5.Id, "canEdit");
+            userManager.AddToRole(user6.Id, "canEdit");
 
         }
     }

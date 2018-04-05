@@ -435,7 +435,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\CheckOutBooks\Jquery.cshtml" />
     <Content Include="Views\Students\Filter.cshtml" />
     <Content Include="Views\Books\Filter.cshtml" />
     <Content Include="Views\Supplies\Filter.cshtml" />
