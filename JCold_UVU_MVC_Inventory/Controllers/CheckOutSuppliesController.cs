@@ -112,10 +112,10 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch(DbEntityValidationException ex)
+                catch
                 {
 
-                    return Content("check out request was invalid go back and try again" + ex);
+                    return Content("check out request was invalid go back and try again");
                 }
 
             }
