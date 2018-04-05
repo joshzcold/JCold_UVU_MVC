@@ -444,6 +444,7 @@
     <Content Include="Views\UserRoles\Details.cshtml" />
     <Content Include="Views\UserRoles\Edit.cshtml" />
     <Content Include="Views\UserRoles\Index.cshtml" />
+    <Content Include="StyleGuide\uvu_style_guide.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,6 +24,22 @@ textarea {
 }
 
 /* unvisited link */
+.uvu-nav-link:link {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* mouse over link */
+.uvu-nav-link:hover {
+    color: rgba(255, 255, 255, .7);
+    text-decoration: none;
+}
+
+/* selected link */
+.uvu-nav-link:active {
+    color: rgba(255, 255, 255, .7);
+}
+
+/* unvisited link */
 a:link {
     color: #969696;
 }
@@ -44,7 +60,61 @@ a:visited {
     color: #969696;
 }
 
+
 .img-logo{
     width: 128px;
     height: 71px;
 }
+
+.jumbotron-uvu {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #fff;
+    border-radius: 0.3rem;
+}
+
+@media (min-width: 576px) {
+    .jumbotron-uvu {
+        padding: 4rem 2rem;
+    }
+}
+
+.jumbotron-uvu-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 0;
+}
+
+.btn-uvu {
+    color: #fff;
+    background-color: #275D38;
+    border-color: #275D38;
+}
+
+    .btn-uvu:hover {
+        color: #fff;
+        background-color: #00843D;
+        border-color: #1e7e34;
+    }
+
+    .btn-uvu:focus, .btn-success.focus {
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-uvu.disabled, .btn-success:disabled {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-uvu:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+    .show > .btn-uvu.dropdown-toggle {
+        color: #fff;
+        background-color: #1e7e34;
+        border-color: #1c7430;
+    }
+
+        .btn-uvu:not(:disabled):not(.disabled):active:focus, .btn-uvu:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-success.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+        }
