@@ -1,26 +1,34 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
 <div class="jumbotron">
-    <h1>UVU Inventory Tracking</h1>
+    <h1 class="display-4 text-center">UISB</h1>
+    <p class="lead text-center">UVU Book, and Supply Inventory.</p>
+    <hr class="my-4">
+    <p class="text-center">
+        If you are a student feel free to look at the Books and Supplies
+        available for check out at your department's office.
+    </p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Books</h2>
-        <p>View all available books</p>
+<div class="row justify-content-around">
+
+    <div class="col-sm text-center">
+
         <a href="@Url.Action("Index", "Books")" style="color: white" class="btn btn-info btn-lg">Books</a>
+        <p class="font-weight-light"><small>View all available books</small></p>
     </div>
-    <div class="col-md-4">
-        <h2>Supplies</h2>
-        <p>View all available supplies</p>
-        <a href="@Url.Action("Index", "Supplies")" style="color: white" class="btn btn-info btn-lg">Supplies</a>
-    </div>
-    <div class="col-md-4">
-        <h2>Departments</h2>
-        <p>view all available departments</p>
+    <div class="col-sm text-center">
+
         <a href="@Url.Action("Index", "Departments")" style="color: white" class="btn btn-info btn-lg">Departments</a>
+        <p class="font-weight-light"><small>View all available departments</small></p>
     </div>
+    <div class="col-sm text-center">
+
+        <a href="@Url.Action("Index", "Supplies")" style="color: white" class="btn btn-info btn-lg">Supplies</a>
+        <p class="font-weight-light"><small>View all available supplies</small></p>
+    </div>
+
 </div>
 
