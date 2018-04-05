@@ -15,9 +15,13 @@
         </dt>
 
         <dd>
+            Title:
             @Html.DisplayFor(model => model.Books.Title),
+            ISBN:
             @Html.DisplayFor(model => model.Books.ISBN),
-            #@Html.DisplayFor(Model => Model.Books.Number)
+            #@Html.DisplayFor(Model => Model.Books.Number),
+            Class Room:
+            @Html.DisplayFor(Model => Model.Books.ClassRoom)
         </dd>
 
         <dt>
@@ -33,8 +37,11 @@
         </dt>
 
         <dd>
+            Name:
             @Html.DisplayFor(model => model.Students.StudentName),
+            UVUID:
             @Html.DisplayFor(model => model.Students.UVUID),
+            Email:
             @Html.DisplayFor(model => model.Students.StudentEmail)
         </dd>
 
@@ -43,7 +50,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReturnedBook)
+            @if (Model.ReturnedBook)
+            {
+                <p>Yes</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
         </dd>
 
         <dt>

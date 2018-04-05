@@ -23,9 +23,12 @@
         </dt>
 
         <dd>
+            Name:
             @Html.DisplayFor(model => model.Students.StudentName),
-            @Html.DisplayFor(Model => Model.Students.UVUID),
-            @Html.DisplayFor(Model => Model.Students.StudentEmail)
+            UVUID:
+            @Html.DisplayFor(model => model.Students.UVUID),
+            Email:
+            @Html.DisplayFor(model => model.Students.StudentEmail)
         </dd>
 
         <dt>
@@ -33,9 +36,13 @@
         </dt>
 
         <dd>
+            Name:
             @Html.DisplayFor(model => model.Supplies.Name),
+            Value:
             @Html.DisplayFor(Model => Model.Supplies.Value),
-            #@Html.DisplayFor(Model => Model.Supplies.Number)
+            #@Html.DisplayFor(Model => Model.Supplies.Number),
+            Class Room:
+            @Html.DisplayFor(Model => Model.Supplies.ClassRoom)
         </dd>
 
         <dt>
@@ -43,7 +50,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReturnedSupply)
+            @if (Model.ReturnedSupply)
+            {
+                <p>Yes</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
         </dd>
 
         <dt>
