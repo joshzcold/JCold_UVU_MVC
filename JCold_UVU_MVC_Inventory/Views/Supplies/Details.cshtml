@@ -53,6 +53,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SuppliesID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.IsInRole("canEdit"))
+    {
+    <a href="@Url.Action("Edit", "Supplies", new { id = Model.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+    }
+    <a href="@Url.Action("Index", "Supplies", new { id = Model.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Back To List</a>
 </p>

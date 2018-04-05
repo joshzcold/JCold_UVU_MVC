@@ -56,7 +56,7 @@
                 {
                     @item
                     <br />
-                    <br />  
+                    <br />
                 }
             }
             else
@@ -88,6 +88,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentsID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", "Students", new { id = Model.StudentsID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+    <a href="@Url.Action("Index", "Students", new { id = Model.StudentsID })" style="color: black" class="btn btn-sm btn-light">Back To List</a>
 </p>

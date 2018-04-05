@@ -9,26 +9,37 @@
 <h2><i class="fa fa-lg fa-search "></i>Filter</h2>
 <br />
 <br />
-<a href="@Url.Action("Create", "Departments")" style="color: white" class="btn btn-primary">Check out</a>
-<a href="@Url.Action("Index", "Departments")" style="color: white" class="btn btn-secondary">Back</a>
-<br />
-<p></p>
-
-@Html.Grid(Model).Columns(c =>
+@if (User.IsInRole("canEdit"))
 {
-    c.Add(d => d.DepName).Titled("Department Name");
-    c.Add(d => d.Location).Titled("Location");
-    c.Add(d => d.Telephone).Titled("Telephone");
-    c.Add(d => d.Email).Titled("Email");
-    c.Add(d => d.WebAddress).Titled("Website");
-    c.Add(d => d.DepChair).Titled("Department Chair");
-    c.Add(d => d.DepChairEmail).Titled("DepChairEmail");
-    c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
-@<b>
-    <a href="@Url.Action("Edit", "Departments", new {id = o.DepartmentID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
-    <a href="@Url.Action("Details", "Departments", new {id = o.DepartmentID })"><i class="fa fa-lg fa-info-circle"></i></a>
-    <a href="@Url.Action("Delete", "Departments", new {id = o.DepartmentID })"><i class="fa fa-lg fa-times-circle"></i></a>
-</b>));
-        }).Sortable(true).Filterable(true).WithPaging(10)
+    <a href="@Url.Action("Create", "Departments")" style="color: white" class="btn btn-primary">Add Department</a>
+    }
+    <a href="@Url.Action("Index", "Departments")" style="color: white" class="btn btn-secondary">Back</a>
+    <br />
+    <p></p>
+
+    @Html.Grid(Model).Columns(c =>
+    {
+        c.Add(d => d.DepName).Titled("Department Name");
+        c.Add(d => d.Location).Titled("Location");
+        c.Add(d => d.Telephone).Titled("Telephone");
+        c.Add(d => d.Email).Titled("Email");
+        c.Add(d => d.WebAddress).Titled("Website");
+        c.Add(d => d.DepChair).Titled("Department Chair");
+        c.Add(d => d.DepChairEmail).Titled("DepChairEmail");
+        c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
+    @<b>
+        @if (User.IsInRole("canEdit"))
+                        {
+            <a href="@Url.Action("Edit", "Departments", new { id = o.DepartmentID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
+                        }
+        
+        <a href="@Url.Action("Details", "Departments", new {id = o.DepartmentID })"><i class="fa fa-lg fa-info-circle"></i></a>
+        @if (User.IsInRole("canEdit"))
+                        {
+            <a href="@Url.Action("Delete", "Departments", new { id = o.DepartmentID })"><i class="fa fa-lg fa-times-circle"></i></a>
+                        }
+        
+    </b>));
+                }).Sortable(true).Filterable(true).WithPaging(10)
 
 

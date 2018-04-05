@@ -14,7 +14,10 @@
 <br />
 <br />
 <p>
-    <a href="@Url.Action("Create", "Supplies")" style="color: white" class="btn btn-primary">Create Supply</a>
+    @if (User.IsInRole("canEdit"))
+    {
+        <a href="@Url.Action("Create", "Supplies")" style="color: white" class="btn btn-primary">Create Supply</a>
+    }
     <a href="@Url.Action("Filter", "Supplies")" style="color: white" class="btn btn-primary">Filter</a>
 </p>
 <table class="table">
@@ -77,9 +80,15 @@
                 @Html.DisplayFor(modelItem => item.ClassRoom)
             </td>
             <td>
-                <a href="@Url.Action("Edit", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                @if (User.IsInRole("canEdit"))
+                {
+                    <a href="@Url.Action("Edit", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                }
                 <a href="@Url.Action("Details", "Supplies", new { id = item.SuppliesID})" style="color: black" class="btn btn-sm btn-light">Details</a>
-                <a href="@Url.Action("Delete", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+                @if (User.IsInRole("canEdit"))
+                {
+                    <a href="@Url.Action("Delete", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+                }
             </td>
         </tr>
     }

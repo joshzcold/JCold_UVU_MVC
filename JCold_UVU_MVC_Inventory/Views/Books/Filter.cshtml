@@ -9,26 +9,36 @@
 <h2><i class="fa fa-lg fa-search "></i>Filter</h2>
 <br />
 <br />
-<a href="@Url.Action("Create", "Books")" style="color: white" class="btn btn-primary">Check out</a>
+@if (User.IsInRole("canEdit"))
+{
+    <a href="@Url.Action("Create", "Books")" style="color: white" class="btn btn-primary">Create Book</a>
+}
 <a href="@Url.Action("Index", "Books")" style="color: white" class="btn btn-secondary">Back</a>
 <br />
 <p></p>
 
 @Html.Grid(Model).Columns(c =>
-{
-    c.Add(d => d.Title).Titled("Book");
-    c.Add(d => d.ISBN).Titled("ISBN");
-    c.Add(d => d.Author).Titled("Author");
-    c.Add(d => d.Publisher).Titled("Publisher");
-    c.Add(d => d.Number).Titled("#");
-    c.Add(d => d.Available).Titled("Available");
-    c.Add(d => d.ClassRoom).Titled("Class Room");
-    c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
-@<b>
-    <a href="@Url.Action("Edit", "Books", new {id = o.BooksID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
-    <a href="@Url.Action("Details", "Books", new {id = o.BooksID })"><i class="fa fa-lg fa-info-circle"></i></a>
-    <a href="@Url.Action("Delete", "Books", new {id = o.BooksID })"><i class="fa fa-lg fa-times-circle"></i></a>
-</b>));
-        }).Sortable(true).Filterable(true).WithPaging(10)
+    {
+        c.Add(d => d.Title).Titled("Book");
+        c.Add(d => d.ISBN).Titled("ISBN");
+        c.Add(d => d.Author).Titled("Author");
+        c.Add(d => d.Publisher).Titled("Publisher");
+        c.Add(d => d.Number).Titled("#");
+        c.Add(d => d.Available).Titled("Available");
+        c.Add(d => d.ClassRoom).Titled("Class Room");
+        c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
+    @<b>
+    @if (User.IsInRole("canEdit"))
+    {
+        <a href="@Url.Action("Edit", "Books", new { id = o.BooksID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
+    }
+        <a href="@Url.Action("Details", "Books", new {id = o.BooksID })"><i class="fa fa-lg fa-info-circle"></i></a>
+
+        @if (User.IsInRole("canEdit"))
+        {
+        <a href="@Url.Action("Delete", "Books", new { id = o.BooksID })"><i class="fa fa-lg fa-times-circle"></i></a>
+        }
+    </b>));
+            }).Sortable(true).Filterable(true).WithPaging(10)
 
 

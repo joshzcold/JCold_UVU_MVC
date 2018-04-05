@@ -42,45 +42,53 @@
                     <li class="nav-item">
                         <a href="@Url.Action("Index", "Departments")" class="nav-link">Departments</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Students")" class="nav-link">Students</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Check out
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="@Url.Action("Index", "CheckOutBooks")">Books</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "CheckOutSupplies")">Supplies</a>
-                        </div>
-                </ul>
-                <br />
-                @Html.Partial("_LoginPartial")
-                <br />
+                    @if (User.IsInRole("canEdit"))
+                    {
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Students")" class="nav-link">Students</a>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("canEdit"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Check out
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="@Url.Action("Index", "CheckOutBooks")">Books</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "CheckOutSupplies")">Supplies</a>
+                            </div>
+                            </li>
+                     }
+                    </ul>
+                    <br />
+                    @Html.Partial("_LoginPartial")
+                    <br />
+                </div>
             </div>
+        </nav>
+
+
+
+
+        <br />
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Team EDGT</p>
+            </footer>
         </div>
-    </nav>
 
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryui")
+        @RenderSection("scripts", required: false)
 
-
-
-    <br />
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Team EDGT</p>
-        </footer>
-    </div>
-
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/themes/base/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryui")
-    @RenderSection("scripts", required: false)
-
-</body>
+    </body>
 </html>
 

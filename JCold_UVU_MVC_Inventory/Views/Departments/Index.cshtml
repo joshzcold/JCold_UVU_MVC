@@ -9,7 +9,10 @@
 <br />
 <br />
 <p>
-    <a href="@Url.Action("Create", "Departments")" style="color: white" class="btn btn-primary">Add Department</a>
+    @if (User.IsInRole("canEdit"))
+    {
+        <a href="@Url.Action("Create", "Departments")" style="color: white" class="btn btn-primary">Add Department</a>
+    }
     <a href="@Url.Action("Filter", "Departments")" style="color: white" class="btn btn-primary">Filter</a>
 </p>
 <table class="table">
@@ -63,9 +66,15 @@
                 @Html.DisplayFor(modelItem => item.DepChairEmail)
             </td>
             <td>
-                <a href="@Url.Action("Edit", "Departments", new { id = item.DepartmentID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                @if (User.IsInRole("canEdit"))
+                {
+                    <a href="@Url.Action("Edit", "Departments", new { id = item.DepartmentID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                }
                 <a href="@Url.Action("Details", "Departments", new { id = item.DepartmentID })" style="color: black" class="btn btn-sm btn-light">Details</a>
-                <a href="@Url.Action("Delete", "Departments", new { id = item.DepartmentID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+                @if (User.IsInRole("canEdit"))
+                {
+                    <a href="@Url.Action("Delete", "Departments", new { id = item.DepartmentID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+                }
             </td>
         </tr>
     }

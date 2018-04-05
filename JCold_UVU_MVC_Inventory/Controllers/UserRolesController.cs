@@ -10,116 +10,107 @@ using JCold_UVU_MVC_Inventory.Models;
 
 namespace JCold_UVU_MVC_Inventory.Controllers
 {
-    public class DepartmentsController : Controller
+    public class UserRolesController : Controller
     {
         private JCold_UVU_MVC_InventoryDb db = new JCold_UVU_MVC_InventoryDb();
 
-        // GET: Departments
+        // GET: UserRoles
         public ActionResult Index()
         {
-            return View(db.Departments.ToList());
-        }
-        public ActionResult Filter()
-        {
-            var Departments = db.Departments;
-            return View(Departments.ToList());
+            return View(db.UserRoles.ToList());
         }
 
-
-        // GET: Departments/Details/5
+        // GET: UserRoles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            UserRoles userRoles = db.UserRoles.Find(id);
+            if (userRoles == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            return View(userRoles);
         }
 
-        [Authorize(Roles = "canEdit")]
-        // GET: Departments/Create
+        // GET: UserRoles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Departments/Create
+        // POST: UserRoles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DepartmentID,DepName,Location,Telephone,Email,WebAddress,DepChair,DepChairEmail")] Department department)
+        public ActionResult Create([Bind(Include = "UserRolesId,UserRoleName")] UserRoles userRoles)
         {
             if (ModelState.IsValid)
             {
-                db.Departments.Add(department);
+                db.UserRoles.Add(userRoles);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(department);
+            return View(userRoles);
         }
 
-        [Authorize(Roles = "canEdit")]
-        // GET: Departments/Edit/5
+        // GET: UserRoles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            UserRoles userRoles = db.UserRoles.Find(id);
+            if (userRoles == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            return View(userRoles);
         }
 
-        // POST: Departments/Edit/5
+        // POST: UserRoles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DepartmentID,DepName,Location,Telephone,Email,WebAddress,DepChair,DepChairEmail")] Department department)
+        public ActionResult Edit([Bind(Include = "UserRolesId,UserRoleName")] UserRoles userRoles)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(department).State = EntityState.Modified;
+                db.Entry(userRoles).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(department);
+            return View(userRoles);
         }
 
-        [Authorize(Roles = "canEdit")]
-        // GET: Departments/Delete/5
+        // GET: UserRoles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            UserRoles userRoles = db.UserRoles.Find(id);
+            if (userRoles == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            return View(userRoles);
         }
 
-        // POST: Departments/Delete/5
+        // POST: UserRoles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Department department = db.Departments.Find(id);
-            db.Departments.Remove(department);
+            UserRoles userRoles = db.UserRoles.Find(id);
+            db.UserRoles.Remove(userRoles);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

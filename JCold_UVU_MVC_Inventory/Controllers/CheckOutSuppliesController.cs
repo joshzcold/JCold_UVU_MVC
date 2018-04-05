@@ -14,6 +14,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
     public class CheckOutSuppliesController : Controller
     {
         private JCold_UVU_MVC_InventoryDb db = new JCold_UVU_MVC_InventoryDb();
+        [Authorize(Roles = "canEdit")]
 
         // GET: CheckOutSupplies
         public ActionResult Index()

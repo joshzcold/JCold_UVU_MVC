@@ -13,7 +13,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
     public class StudentsController : Controller
     {
         private JCold_UVU_MVC_InventoryDb db = new JCold_UVU_MVC_InventoryDb();
-
+        [Authorize(Roles = "canEdit")]
         // GET: Students
         public ActionResult Index(int? id)
         {

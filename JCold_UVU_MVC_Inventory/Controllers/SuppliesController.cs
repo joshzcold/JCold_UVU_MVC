@@ -58,6 +58,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(supplies);
         }
 
+        [Authorize(Roles = "canEdit")]
         // GET: Supplies/Create
         public ActionResult Create()
         {
@@ -104,6 +105,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(supplies);
         }
 
+        [Authorize(Roles = "canEdit")]
         // GET: Supplies/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -181,6 +183,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "canEdit")]
         // GET: Supplies/Delete/5
         public ActionResult Delete(int? id)
         {

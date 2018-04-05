@@ -73,6 +73,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CheckOutBookID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", "CheckOutBooks", new { id = Model.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+    <a href="@Url.Action("Index", "CheckOutBooks", new { id = Model.CheckOutBookID })" style="color: black" class="btn btn-sm btn-light">Back To List</a>
 </p>

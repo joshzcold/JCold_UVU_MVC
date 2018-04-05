@@ -16,7 +16,10 @@
 <br />
 <br />
 <p>
-    <a href="@Url.Action("Create", "Books")" style="color: white" class="btn btn-primary">Create Book</a>
+    @if (User.IsInRole("canEdit"))
+    {
+        <a href="@Url.Action("Create", "Books")" style="color: white" class="btn btn-primary">Create Book</a>
+    }
     <a href="@Url.Action("Filter", "Books")" style="color: white" class="btn btn-primary">Filter</a>
 </p>
 <table class="table">
@@ -90,13 +93,22 @@
                 @Html.DisplayFor(modelItem => item.ClassRoom)
             </td>
             <td>
-                <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                @if (User.IsInRole("canEdit"))
+                {
+                    <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                }
+
+                <!-- Details will show for regular usrs to click-->
                 <a href="@Url.Action("Details", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Details</a>
-                <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+
+                @if (User.IsInRole("canEdit"))
+                {
+                    <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+                }
 
                 @if (item.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
                 {
-                   <i class="fa fa-camera"></i>
+                    <i class="fa fa-camera"></i>
                 }
             </td>
         </tr>

@@ -60,7 +60,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             }
             return View(books);
         }
-
+        [Authorize(Roles = "canEdit")]
         // GET: Books/Create
         public ActionResult Create()
         {
@@ -107,7 +107,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
             return View(books);
         }
-
+        [Authorize(Roles = "canEdit")]
         // GET: Books/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -184,7 +184,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "canEdit")]
         // GET: Books/Delete/5
         public ActionResult Delete(int? id)
         {

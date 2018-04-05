@@ -15,7 +15,10 @@
 <br />
 <br />
 <p>
-    <a href="@Url.Action("Create", "Books")" style="color: white" class="btn btn-primary">Create Book</a>
+    @if (User.IsInRole("canEdit"))
+    {
+        <a href="@Url.Action("Create", "Books")" style="color: white" class="btn btn-primary">Create Book</a>
+    }
 </p>
 <br />
 <h3>Search Results:</h3>
@@ -47,41 +50,48 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ISBN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Publisher)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Number)
-        </td>
-        <td>
-            @if (@item.Available)
-        {
-            <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
-    }
-    else
-    {
-        <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
-}
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClassRoom)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.BooksID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.BooksID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.BooksID })
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @if (@item.Available)
+                {
+                    <i class="fa fa-lg fa-check-circle" style="color: forestgreen"></i>
+                }
+                else
+                {
+                    <i class="fa fa-lg fa-times-circle" style="color: darkred"></i>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassRoom)
+            </td>
+            <td>
+                @if (User.IsInRole("canEdit"))
+                {
+                <a href="@Url.Action("Edit", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                }
+
+                <a href="@Url.Action("Details", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+                @if (User.IsInRole("canEdit"))
+                {
+                <a href="@Url.Action("Delete", "Books", new { id = item.BooksID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+                }
+            </td>
+        </tr>
     }
 
 </table>

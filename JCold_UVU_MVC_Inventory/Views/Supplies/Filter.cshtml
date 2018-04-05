@@ -9,24 +9,35 @@
 <h2><i class="fa fa-lg fa-search "></i>Filter</h2>
 <br />
 <br />
-<a href="@Url.Action("Create", "Supplies")" style="color: white" class="btn btn-primary">Check out</a>
-<a href="@Url.Action("Index", "Supplies")" style="color: white" class="btn btn-secondary">Back</a>
-<br />
-<p></p>
-
-@Html.Grid(Model).Columns(c =>
+@if (User.IsInRole("canEdit"))
 {
-    c.Add(d => d.Name).Titled("Name");
-    c.Add(d => d.Value).Titled("Value");
-    c.Add(d => d.Number).Titled("#");
-    c.Add(d => d.Available).Titled("Available");
-    c.Add(d => d.ClassRoom).Titled("Class Room");
-    c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
-@<b>
-    <a href="@Url.Action("Edit", "Supplies", new {id = o.SuppliesID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
-    <a href="@Url.Action("Details", "Supplies", new {id = o.SuppliesID })"><i class="fa fa-lg fa-info-circle"></i></a>
-    <a href="@Url.Action("Delete", "Supplies", new {id = o.SuppliesID })"><i class="fa fa-lg fa-times-circle"></i></a>
-</b>));
-        }).Sortable(true).Filterable(true).WithPaging(10)
+    <a href="@Url.Action("Create", "Supplies")" style="color: white" class="btn btn-primary">Create Supply</a>
+}
+    <a href="@Url.Action("Index", "Supplies")" style="color: white" class="btn btn-secondary">Back</a>
+    <br />
+    <p></p>
+
+    @Html.Grid(Model).Columns(c =>
+    {
+        c.Add(d => d.Name).Titled("Name");
+        c.Add(d => d.Value).Titled("Value");
+        c.Add(d => d.Number).Titled("#");
+        c.Add(d => d.Available).Titled("Available");
+        c.Add(d => d.ClassRoom).Titled("Class Room");
+        c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
+    @<b>
+        @if (User.IsInRole("canEdit"))
+                        {
+            <a href="@Url.Action("Edit", "Supplies", new { id = o.SuppliesID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
+                        }
+        
+        <a href="@Url.Action("Details", "Supplies", new {id = o.SuppliesID })"><i class="fa fa-lg fa-info-circle"></i></a>
+        @if (User.IsInRole("canEdit"))
+                        {
+            <a href="@Url.Action("Delete", "Supplies", new { id = o.SuppliesID })"><i class="fa fa-lg fa-times-circle"></i></a>
+                        }
+        
+    </b>));
+                }).Sortable(true).Filterable(true).WithPaging(10)
 
 

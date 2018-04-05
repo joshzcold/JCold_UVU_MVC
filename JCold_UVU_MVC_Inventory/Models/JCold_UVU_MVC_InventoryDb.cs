@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace JCold_UVU_MVC_Inventory.Models
 {
-    public class JCold_UVU_MVC_InventoryDb : DbContext
+    public class JCold_UVU_MVC_InventoryDb : IdentityDbContext<ApplicationUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -19,18 +20,26 @@ namespace JCold_UVU_MVC_Inventory.Models
         {
 
         }
+        public static JCold_UVU_MVC_InventoryDb Create()
+        {
+            return new JCold_UVU_MVC_InventoryDb();
+        }
 
-        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.Department> Departments { get; set; }
 
-        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.Books> Books { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
-        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.Students> Students { get; set; }
+        public DbSet<Books> Books { get; set; }
 
-        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.Supplies> Supplies { get; set; }
+        public DbSet<Students> Students { get; set; }
 
-        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.CheckOutBook> CheckOutBooks { get; set; }
+        public DbSet<Supplies> Supplies { get; set; }
 
-        public System.Data.Entity.DbSet<JCold_UVU_MVC_Inventory.Models.CheckOutSupplies> CheckOutSupplies { get; set; }
+        public DbSet<CheckOutBook> CheckOutBooks { get; set; }
+
+        public DbSet<CheckOutSupplies> CheckOutSupplies { get; set; }
+
         public DbSet<File> Files { get; set; }
+
+        public DbSet<UserRoles> UserRoles { get; set; }
     }
 }

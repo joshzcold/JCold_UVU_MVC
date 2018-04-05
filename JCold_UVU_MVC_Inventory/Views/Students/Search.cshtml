@@ -8,8 +8,8 @@
 
 @using (Html.BeginForm("Search", "Students", FormMethod.Get, new { @class = "form-inline" }))
 {
-    <input type="text"  class="form-control"  size="30" name="studentName"  placeholder="Search Name, UVU ID" />
-    <input type="submit"  class="btn btn-default" value="Search" />
+    <input type="text" class="form-control" size="30" name="studentName" placeholder="Search Name, UVU ID" />
+    <input type="submit" class="btn btn-default" value="Search" />
 }
 <br />
 <br />
@@ -52,9 +52,29 @@
                 @Html.DisplayFor(modelItem => item.StudentPhone)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StudentsID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.StudentsID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.StudentsID })
+                @if (item.HasCheckedOutBooks)
+                {
+                    <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-outline-primary">Yes</a>
+                }
+                else
+                {
+                    <span class="badge badge-light">No</span>
+                }
+            </td>
+            <td>
+                @if (item.HasCheckedOutSupplies)
+                {
+                    <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-outline-primary">Yes</a>
+                }
+                else
+                {
+                    <span class="badge badge-light">No</span>
+                }
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-light">Edit</a>
+                <a href="@Url.Action("Details", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-light">Details</a>
+                <a href="@Url.Action("Delete", "Students", new { id = item.StudentsID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
             </td>
         </tr>
     }
