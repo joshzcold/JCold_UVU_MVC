@@ -26,7 +26,7 @@
                     $("#SuppliesID").autocomplete({
                         source: function (request, response) {
                             $.ajax({
-                                url: "/CheckOutSupplies/AutoCompleteSupplies",
+                                url: "AutoCompleteSupplies",
                                 type: "POST",
                                 dataType: "json",
                                 data: { Prefix: request.term },
@@ -70,7 +70,7 @@
                     $("#StudentsID").autocomplete({
                         source: function (request, response) {
                             $.ajax({
-                                url: "/CheckOutSupplies/AutoCompleteStudents",
+                                url: "AutoCompleteStudents",
                                 type: "POST",
                                 dataType: "json",
                                 data: { Prefix: request.term },
