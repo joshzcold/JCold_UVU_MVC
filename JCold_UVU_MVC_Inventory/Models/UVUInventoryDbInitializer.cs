@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace JCold_UVU_MVC_Inventory.Models
 {
-    public class UVUInventoryDbInitializer : DropCreateDatabaseAlways<JCold_UVU_MVC_InventoryDb>
+    public class UVUInventoryDbInitializer : DropCreateDatabaseIfModelChanges<JCold_UVU_MVC_InventoryDb>
     {
         protected override void Seed(JCold_UVU_MVC_InventoryDb context)
         {
