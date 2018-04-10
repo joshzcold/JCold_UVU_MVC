@@ -2,10 +2,12 @@
 Simple and Intuitive Inventory Website to keep track of books and supplies for a school enviroment.
 
 Made with:
-  MVC
-  Bootstrap 4
-  Fontawesome
-  Entity Framework
+  MVC,
+  Bootstrap 4,
+  Fontawesome,
+  Entity Framework,
+  Jquery Ui,
+  MVCGrid
 
 Features:
   Storing Book, Supplies, Department, and Student data values.
