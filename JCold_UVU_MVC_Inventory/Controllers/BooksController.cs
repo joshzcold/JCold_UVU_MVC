@@ -26,11 +26,42 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                 on chkb.BooksID equals bk.BooksID
                 where chkb.BooksID == bk.BooksID && chkb.ReturnedBook == false
                 select bk;
-
             foreach (Books chkb in UpdateQuery)
             {
                 chkb.Available = false;
             }
+
+                       var UpdateQueryOpposite =
+                from chkb in db.CheckOutBooks
+                join bk in db.Books
+                on chkb.BooksID equals bk.BooksID
+                where chkb.BooksID == bk.BooksID && chkb.ReturnedBook == true
+                select bk;
+            foreach (Books chkb in UpdateQuery)
+            {
+                chkb.Available = true;
+            }
+
+            //   var ResetUpdateQueryBooksOnReturn =
+            //   from chks in db.CheckOutBooks
+            //   join st in db.Books
+            //   on chks.BooksID equals st.BooksID
+            //   where chks.BooksID == st.BooksID && chks.ReturnedBook == true
+            //   select st;
+            //foreach (Books chkb in ResetUpdateQueryBooksOnReturn)
+            //{
+            //    chkb.Available = true;
+            //}
+
+            var ResetUpdateQueryBooksOnDelete =
+                from st in db.Books
+                where !(from ch in db.CheckOutBooks select ch.BooksID).Contains(st.BooksID)
+                select st;
+            foreach (Books chkb in ResetUpdateQueryBooksOnDelete)
+            {
+                chkb.Available = true;
+            }
+            db.SaveChanges();
             return View(db.Books.ToList());
         }
 
