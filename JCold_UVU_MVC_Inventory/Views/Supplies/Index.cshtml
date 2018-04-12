@@ -89,6 +89,10 @@
                 {
                     <a href="@Url.Action("Delete", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
                 }
+                @if (item.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
+                {
+                    <i class="fa fa-camera"></i>
+                }
             </td>
         </tr>
     }
