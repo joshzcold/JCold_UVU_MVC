@@ -16,3 +16,4 @@ Features:
   Searching on books, supplies, students.
   User authentication
 
+![image](https://user-images.githubusercontent.com/36175703/38700591-d4520ecc-3e58-11e8-89fe-6bbc1c786dcd.png)
