@@ -19,9 +19,8 @@
 
     <!-- Begin Jquery ui books autocomplete-->
     <div class="form-group">
-        @Html.LabelFor(model => model.BooksID, "Book:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="badge badge-light">
-            Title:
+        <div class="col-form-label">
+            Book:
             @Html.DisplayFor(model => model.Books.Title),
             ISBN:
             @Html.DisplayFor(model => model.Books.ISBN),
@@ -74,10 +73,8 @@
     <!-- End Jquery ui books autocomplete-->
     <!-- Begin Jquery ui students autocomplete-->
     <div class="form-group">
-
-        @Html.LabelFor(model => model.StudentsID, "Student:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="badge badge-light">
-            Name:
+        <div class="col-form-label">
+            Student:
             @Html.DisplayFor(model => model.Students.StudentName),
             UVUID:
             @Html.DisplayFor(model => model.Students.UVUID),

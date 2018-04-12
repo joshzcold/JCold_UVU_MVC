@@ -8,7 +8,7 @@
 <h2><i class="fa fa-lg fa-search "></i>Filter</h2>
 <br />
 <br />
-<a href="@Url.Action("Create", "Students")" style="color: white" class="btn btn-primary">Add Student</a>
+<a href="@Url.Action("Create", "Students")" style="color: white" class="btn btn-uvu">Add Student</a>
 <a href="@Url.Action("Index", "Students")" style="color: white" class="btn btn-secondary">Back</a>
 <br />
 <p></p>
@@ -23,9 +23,9 @@
     c.Add(d => d.HasCheckedOutSupplies).Titled("Checked Supplies");
     c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
 @<b>
-    <a href="@Url.Action("Edit", "Students", new {id = o.StudentsID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
-    <a href="@Url.Action("Details", "Students", new {id = o.StudentsID })"><i class="fa fa-lg fa-info-circle"></i></a>
-    <a href="@Url.Action("Delete", "Students", new {id = o.StudentsID })"><i class="fa fa-lg fa-times-circle"></i></a>
+    <a href="@Url.Action("Edit", "Students", new {id = o.StudentsID })"><i class="fa  fa-lg fa-pencil-square" title="Edit"></i></a>
+    <a href="@Url.Action("Details", "Students", new {id = o.StudentsID })"><i class="fa fa-lg fa-info-circle" title="Details"></i></a>
+    <a href="@Url.Action("Delete", "Students", new {id = o.StudentsID })"><i class="fa fa-lg fa-times-circle" title="Delete"></i></a>
 </b>));
         }).Sortable(true).Filterable(true).WithPaging(10)
 

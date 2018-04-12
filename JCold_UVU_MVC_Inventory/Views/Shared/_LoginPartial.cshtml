@@ -3,25 +3,25 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <div class="dropdown navbar-btn">
-        <a class="fa fa-lg fa-user-circle" href="#" id="dropMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-        <div class="dropdown-menu text-center" aria-labelledby="dropMenu">
-            <h5 class="dropdown-header">@User.Identity.GetUserName()</h5>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="@Url.Action("Index", "Manage")">Account</a>
-            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-        </div>
-    </div>
+        <ul class="navbar-nav">
+            <div class="dropdown navbar-btn">
+                <a class="fa fa-lg fa-user-circle uvu-nav-link" href="#" id="dropMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                <div class="dropdown-menu text-center" aria-labelledby="dropMenu">
+                    <h5 class="dropdown-header">@User.Identity.GetUserName()</h5>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Manage")">Account</a>
+                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                </div>
+            </div>
+        </ul>
+
     }
 }
 else
 {
     <ul class="navbar-nav">
-        <li class="nav-item ">
-            <a href="@Url.Action("Register", "Account")" class="nav-link">Register</a>
-        </li>
         <li class="nav-item ">
             <a href="@Url.Action("Login", "Account")" class="nav-link">Log in</a>
         </li>

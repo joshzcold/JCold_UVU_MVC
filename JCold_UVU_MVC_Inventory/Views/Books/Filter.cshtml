@@ -11,7 +11,7 @@
 <br />
 @if (User.IsInRole("canEdit"))
 {
-    <a href="@Url.Action("Create", "Books")" style="color: white" class="btn btn-primary">Create Book</a>
+    <a href="@Url.Action("Create", "Books")" style="color: white" class="btn btn-uvu">Create Book</a>
 }
 <a href="@Url.Action("Index", "Books")" style="color: white" class="btn btn-secondary">Back</a>
 <br />
@@ -30,13 +30,13 @@
     @<b>
     @if (User.IsInRole("canEdit"))
     {
-        <a href="@Url.Action("Edit", "Books", new { id = o.BooksID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
+        <a href="@Url.Action("Edit", "Books", new { id = o.BooksID })"><i class="fa  fa-lg fa-pencil-square" title="Edit"></i></a>
     }
-        <a href="@Url.Action("Details", "Books", new {id = o.BooksID })"><i class="fa fa-lg fa-info-circle"></i></a>
+        <a href="@Url.Action("Details", "Books", new {id = o.BooksID })"><i class="fa fa-lg fa-info-circle" title="Details"></i></a>
 
         @if (User.IsInRole("canEdit"))
         {
-        <a href="@Url.Action("Delete", "Books", new { id = o.BooksID })"><i class="fa fa-lg fa-times-circle"></i></a>
+        <a href="@Url.Action("Delete", "Books", new { id = o.BooksID })"><i class="fa fa-lg fa-times-circle" title="Delete"></i></a>
         }
     </b>));
             }).Sortable(true).Filterable(true).WithPaging(10)

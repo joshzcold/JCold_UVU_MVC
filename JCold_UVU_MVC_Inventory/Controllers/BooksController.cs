@@ -20,23 +20,43 @@ namespace JCold_UVU_MVC_Inventory.Controllers
 
         public ActionResult Index()
         {
-            var UpdateQuery =
-                from chkb in db.CheckOutBooks
-                join bk in db.Books
-                on chkb.BooksID equals bk.BooksID
-                where chkb.BooksID == bk.BooksID && chkb.ReturnedBook == false
-                select bk;
+            var SetAvailableBooksTrue =
+            from chkb in db.CheckOutBooks
+            join bk in db.Books
+            on chkb.BooksID equals bk.BooksID
+            where chkb.BooksID == bk.BooksID && chkb.ReturnedBook == true
+            select bk;
+            foreach (Books chkb in SetAvailableBooksTrue)
+            {
+                chkb.Available = true;
+            }
 
-            foreach (Books chkb in UpdateQuery)
+            var SetAvailableBooksFalse =
+            from chkb in db.CheckOutBooks
+            join bk in db.Books
+            on chkb.BooksID equals bk.BooksID
+            where chkb.BooksID == bk.BooksID && chkb.ReturnedBook == false
+            select bk;
+            foreach (Books chkb in SetAvailableBooksFalse)
             {
                 chkb.Available = false;
             }
+
+            var ResetUpdateQueryBooksOnDelete =
+                from st in db.Books
+                where !(from ch in db.CheckOutBooks select ch.BooksID).Contains(st.BooksID)
+                select st;
+            foreach (Books chkb in ResetUpdateQueryBooksOnDelete)
+            {
+                chkb.Available = true;
+            }
+            db.SaveChanges();
             return View(db.Books.ToList());
         }
 
         public ActionResult Search(string bookTitle)
         {
-            List<Books> bookList = db.Books.Where(x => x.Title.Contains(bookTitle) | x.ISBN.Contains(bookTitle) | x.ClassRoom.Contains(bookTitle) ).ToList();
+            List<Books> bookList = db.Books.Where(x => x.Title.Contains(bookTitle) | x.ISBN.Contains(bookTitle) | x.ClassRoom.Contains(bookTitle)).ToList();
             return View(bookList);
         }
 
@@ -128,7 +148,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id,[Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available,ClassRoom")] Books books, HttpPostedFileBase upload)
+        public ActionResult Edit(int? id, [Bind(Include = "BooksID,Title,ISBN,Author,Publisher,Number,Available,ClassRoom")] Books books, HttpPostedFileBase upload)
         {
             if (id == null)
             {
@@ -138,12 +158,12 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             var updateBook = db.Books.Find(books.BooksID);
 
             if (TryUpdateModel(updateBook, "",
-        new string[] { "BooksID","Title","ISBN","Author","Publisher","Number","Available","ClassRoom" }))
+        new string[] { "BooksID", "Title", "ISBN", "Author", "Publisher", "Number", "Available", "ClassRoom" }))
             {
 
             }
 
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -152,7 +172,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                         if (updateBook.Files.Any(x => x.FileType == FileType.Photo))
                         {
                             db.Files.Remove(updateBook.Files.First(x => x.FileType == FileType.Photo));
-                            
+
                         }
 
                         var photo = new File
@@ -166,7 +186,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
                             photo.Content = reader.ReadBytes(upload.ContentLength);
                         }
 
-                        updateBook.Files = new List<File> {photo};
+                        updateBook.Files = new List<File> { photo };
 
 
                         db.Entry(updateBook).State = EntityState.Modified;

@@ -11,7 +11,7 @@
 <br />
 @if (User.IsInRole("canEdit"))
 {
-    <a href="@Url.Action("Create", "Supplies")" style="color: white" class="btn btn-primary">Create Supply</a>
+    <a href="@Url.Action("Create", "Supplies")" style="color: white" class="btn btn-uvu">Create Supply</a>
 }
     <a href="@Url.Action("Index", "Supplies")" style="color: white" class="btn btn-secondary">Back</a>
     <br />
@@ -28,13 +28,13 @@
     @<b>
         @if (User.IsInRole("canEdit"))
                         {
-            <a href="@Url.Action("Edit", "Supplies", new { id = o.SuppliesID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
+            <a href="@Url.Action("Edit", "Supplies", new { id = o.SuppliesID })"><i class="fa  fa-lg fa-pencil-square" title="Edit"></i></a>
                         }
         
-        <a href="@Url.Action("Details", "Supplies", new {id = o.SuppliesID })"><i class="fa fa-lg fa-info-circle"></i></a>
+        <a href="@Url.Action("Details", "Supplies", new {id = o.SuppliesID })"><i class="fa fa-lg fa-info-circle" title="Details"></i></a>
         @if (User.IsInRole("canEdit"))
                         {
-            <a href="@Url.Action("Delete", "Supplies", new { id = o.SuppliesID })"><i class="fa fa-lg fa-times-circle"></i></a>
+            <a href="@Url.Action("Delete", "Supplies", new { id = o.SuppliesID })"><i class="fa fa-lg fa-times-circle" title="Delete"></i></a>
                         }
         
     </b>));

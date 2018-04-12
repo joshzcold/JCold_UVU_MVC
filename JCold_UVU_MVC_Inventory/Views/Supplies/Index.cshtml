@@ -16,9 +16,9 @@
 <p>
     @if (User.IsInRole("canEdit"))
     {
-        <a href="@Url.Action("Create", "Supplies")" style="color: white" class="btn btn-primary">Create Supply</a>
+        <a href="@Url.Action("Create", "Supplies")" style="color: white" class="btn btn-uvu">Create Supply</a>
     }
-    <a href="@Url.Action("Filter", "Supplies")" style="color: white" class="btn btn-primary">Filter</a>
+    <a href="@Url.Action("Filter", "Supplies")" style="color: white" class="btn btn-uvu">Filter</a>
 </p>
 <table class="table">
     <tr>
@@ -60,7 +60,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Value)
+                $@Html.DisplayFor(modelItem => item.Value)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Number)
@@ -88,6 +88,10 @@
                 @if (User.IsInRole("canEdit"))
                 {
                     <a href="@Url.Action("Delete", "Supplies", new { id = item.SuppliesID })" style="color: black" class="btn btn-sm btn-light">Delete</a>
+                }
+                @if (item.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
+                {
+                    <i class="fa fa-camera"></i>
                 }
             </td>
         </tr>

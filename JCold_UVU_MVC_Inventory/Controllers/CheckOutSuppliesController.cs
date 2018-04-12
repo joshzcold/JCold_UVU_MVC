@@ -11,10 +11,11 @@ using JCold_UVU_MVC_Inventory.Models;
 
 namespace JCold_UVU_MVC_Inventory.Controllers
 {
+    [Authorize(Roles = "canEdit")]
     public class CheckOutSuppliesController : Controller
     {
         private JCold_UVU_MVC_InventoryDb db = new JCold_UVU_MVC_InventoryDb();
-        [Authorize(Roles = "canEdit")]
+        
 
         // GET: CheckOutSupplies
         public ActionResult Index()

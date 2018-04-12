@@ -14,8 +14,8 @@
 <br />
 <br />
 <p>
-    <a href="@Url.Action("Create", "Students")" style="color: white" class="btn btn-primary">Add Student</a>
-    <a href="@Url.Action("Filter", "Students")" style="color: white" class="btn btn-primary">Filter</a>
+    <a href="@Url.Action("Create", "Students")" style="color: white" class="btn btn-uvu">Add Student</a>
+    <a href="@Url.Action("Filter", "Students")" style="color: white" class="btn btn-uvu">Filter</a>
 </p>
 <table class="table">
     <tr>
@@ -32,12 +32,12 @@
             @Html.DisplayNameFor(model => model.StudentPhone)
         </th>
         <th>
-            <i class="fa fa-lg fa-check"></i>
-            <i class="fa fa-lg fa-book"></i>
+            <i class="fa fa-lg fa-check" title="Has checked-out books"></i>
+            <i class="fa fa-lg fa-book" title="Has checked-out books"></i>
         </th>
         <th>
-            <i class="fa fa-lg fa-check"></i>
-            <i class="fa fa-lg fa-pencil"></i>
+            <i class="fa fa-lg fa-check" title="Has checked-out supplies"></i>
+            <i class="fa fa-lg fa-pencil" title="Has checked-out supplies"></i>
         </th>
         <th></th>
     </tr>

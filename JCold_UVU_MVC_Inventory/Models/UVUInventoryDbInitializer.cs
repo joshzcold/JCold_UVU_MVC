@@ -39,13 +39,13 @@ namespace JCold_UVU_MVC_Inventory.Models
             context.Students.Add(new Students { StudentName = "Kaleb Alexander", StudentEmail = "87654321@my.uvu.edu", StudentPhone = "555-555-5555", UVUID = "87654321" });
             context.Students.Add(new Students { StudentName = "Renato Pesantes", StudentEmail = "65412387@my.uvu.edu", StudentPhone = "555-555-5555", UVUID = "65412387" });
 
-            context.Supplies.Add(new Supplies { Name = "Laptop Dell", Number = 2, Value = "$500", ClassRoom="Med859" });
-            context.Supplies.Add(new Supplies { Name = "Spectilizer", Number = 2, Value = "$3,000", ClassRoom = "Sci-3400" });
-            context.Supplies.Add(new Supplies { Name = "Oliliscope", Number = 1, Value = "$50,000", ClassRoom = "Med859" });
-            context.Supplies.Add(new Supplies { Name = "Protractor", Number = 3, Value = "$1,000", ClassRoom = "Art452" });
-            context.Supplies.Add(new Supplies { Name = "Protractor2", Number = 4, Value = "$1,000", ClassRoom = "Art452" });
-            context.Supplies.Add(new Supplies { Name = "Protractor3", Number = 5, Value = "$1,000", ClassRoom = "Art452" });
-            context.Supplies.Add(new Supplies { Name = "Protractor4", Number = 6, Value = "$1,000", ClassRoom = "Art452" });
+            context.Supplies.Add(new Supplies { Name = "Laptop Dell", Number = 2, Value = "500", ClassRoom="Med859" });
+            context.Supplies.Add(new Supplies { Name = "Spectilizer", Number = 2, Value = "3,000", ClassRoom = "Sci-3400" });
+            context.Supplies.Add(new Supplies { Name = "Oliliscope", Number = 1, Value = "50,000", ClassRoom = "Med859" });
+            context.Supplies.Add(new Supplies { Name = "Protractor", Number = 3, Value = "1,000", ClassRoom = "Art452" });
+            context.Supplies.Add(new Supplies { Name = "Protractor2", Number = 4, Value = "1,000", ClassRoom = "Art452" });
+            context.Supplies.Add(new Supplies { Name = "Protractor3", Number = 5, Value = "1,000", ClassRoom = "Art452" });
+            context.Supplies.Add(new Supplies { Name = "Protractor4", Number = 6, Value = "1,000", ClassRoom = "Art452" });
 
             base.Seed(context);
 

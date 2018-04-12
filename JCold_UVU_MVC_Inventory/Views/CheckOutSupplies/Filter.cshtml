@@ -8,7 +8,7 @@
 <h2><i class="fa fa-lg fa-search "></i>Filter</h2>
 <br />
 <br />
-<a href="@Url.Action("Create", "CheckOutSupplies")" style="color: white" class="btn btn-primary">Check out</a>
+<a href="@Url.Action("Create", "CheckOutSupplies")" style="color: white" class="btn btn-uvu">Check out</a>
 <a href="@Url.Action("Index", "CheckOutSupplies")" style="color: white" class="btn btn-secondary">Back</a>
 <br />
 <p></p>
@@ -26,9 +26,9 @@
     c.Add(d => d.CheckedOutDate).Titled("Checked out Date");
     c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
 @<b>
-    <a href="@Url.Action("Edit", "CheckOutSupplies", new {id = o.CheckOutSuppliesID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
-    <a href="@Url.Action("Details", "CheckOutSupplies", new {id = o.CheckOutSuppliesID })"><i class="fa fa-lg fa-info-circle"></i></a>
-    <a href="@Url.Action("Delete", "CheckOutSupplies", new {id = o.CheckOutSuppliesID })"><i class="fa fa-lg fa-times-circle"></i></a>
+    <a href="@Url.Action("Edit", "CheckOutSupplies", new {id = o.CheckOutSuppliesID })"><i class="fa  fa-lg fa-pencil-square" title="Edit"></i></a>
+    <a href="@Url.Action("Details", "CheckOutSupplies", new {id = o.CheckOutSuppliesID })"><i class="fa fa-lg fa-info-circle" title="Details"></i></a>
+    <a href="@Url.Action("Delete", "CheckOutSupplies", new {id = o.CheckOutSuppliesID })"><i class="fa fa-lg fa-times-circle" title="Delete"></i></a>
 </b>));
         }).Sortable(true).Filterable(true).WithPaging(10)
 

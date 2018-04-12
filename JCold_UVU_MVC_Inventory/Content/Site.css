@@ -24,27 +24,157 @@ textarea {
 }
 
 /* unvisited link */
+.uvu-nav-link:link {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* mouse over link */
+.uvu-nav-link:hover {
+    color: rgba(255, 255, 255, .7);
+    text-decoration: none;
+}
+
+/* selected link */
+.uvu-nav-link:active {
+    color: rgba(255, 255, 255, .7);
+}
+
+/* unvisited link 
 a:link {
     color: #969696;
 }
 
-/* mouse over link */
+ mouse over link 
 a:hover {
     color: #495057;
     text-decoration: none;
 }
 
-/* selected link */
+ selected link 
 a:active {
     color: #495057;
 }
 
-/* visited link */
+ visited link 
 a:visited {
     color: #969696;
-}
+}*/
+
 
 .img-logo{
     width: 128px;
     height: 71px;
 }
+
+.jumbotron-uvu {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #fff;
+    border-radius: 0.3rem;
+}
+
+@media (min-width: 576px) {
+    .jumbotron-uvu {
+        padding: 4rem 2rem;
+    }
+}
+
+.jumbotron-uvu-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 0;
+}
+
+.btn-uvu {
+    color: #fff;
+    background-color: #275D38;
+    border-color: #275D38;
+}
+
+    .btn-uvu:hover {
+        color: #fff;
+        background-color: #00843D;
+        border-color: #1e7e34;
+    }
+
+    .btn-uvu:focus, .btn-success.focus {
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-uvu.disabled, .btn-success:disabled {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-uvu:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+    .show > .btn-uvu.dropdown-toggle {
+        color: #fff;
+        background-color: #1e7e34;
+        border-color: #1c7430;
+    }
+
+        .btn-uvu:not(:disabled):not(.disabled):active:focus, .btn-uvu:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-success.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+        }
+
+/* Begin Custom UVU Stylings*/
+.bg-uvu {
+    background-color: #275D38 !important;
+}
+
+a.bg-uvu:hover, a.bg-uvu:focus,
+button.bg-light:hover,
+button.bg-light:focus {
+    background-color: #fff !important;
+}
+
+.navbar-uvu .navbar-brand {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+    .navbar-uvu .navbar-brand:hover, .navbar-uvu .navbar-brand:focus {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+.navbar-uvu .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 1);
+}
+
+    .navbar-uvu .navbar-nav .nav-link:hover, .navbar-uvu .navbar-nav .nav-link:focus {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .navbar-uvu .navbar-nav .nav-link.disabled {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .navbar-uvu .navbar-nav .show > .nav-link,
+    .navbar-uvu .navbar-nav .active > .nav-link,
+    .navbar-uvu .navbar-nav .nav-link.show,
+    .navbar-uvu .navbar-nav .nav-link.active {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+.navbar-uvu .navbar-toggler {
+    color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-uvu .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-uvu .navbar-text {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+    .navbar-uvu .navbar-text a {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+        .navbar-uvu .navbar-text a:hover, .navbar-uvu .navbar-text a:focus {
+            color: rgba(255, 255, 255, 0.9);
+        }
+/*End Custom UVU Stylings*/
