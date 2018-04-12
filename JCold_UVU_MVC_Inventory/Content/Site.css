@@ -85,36 +85,36 @@ a:visited {
     border-radius: 0;
 }
 
-.btn-uvu {
+.btn-primary {
     color: #fff;
     background-color: #275D38;
     border-color: #275D38;
 }
 
-    .btn-uvu:hover {
+    .btn-primary:hover {
         color: #fff;
         background-color: #00843D;
         border-color: #1e7e34;
     }
 
-    .btn-uvu:focus, .btn-success.focus {
+    .btn-primary:focus, .btn-success.focus {
         box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
     }
 
-    .btn-uvu.disabled, .btn-success:disabled {
+    .btn-primary.disabled, .btn-success:disabled {
         color: #fff;
         background-color: #28a745;
         border-color: #28a745;
     }
 
-    .btn-uvu:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
-    .show > .btn-uvu.dropdown-toggle {
+    .btn-primary:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+    .show > .btn-primary.dropdown-toggle {
         color: #fff;
         background-color: #1e7e34;
         border-color: #1c7430;
     }
 
-        .btn-uvu:not(:disabled):not(.disabled):active:focus, .btn-uvu:not(:disabled):not(.disabled).active:focus,
+        .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
         .show > .btn-success.dropdown-toggle:focus {
             box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
         }

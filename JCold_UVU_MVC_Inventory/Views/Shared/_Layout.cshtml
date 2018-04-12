@@ -25,14 +25,17 @@
 <body>
 
 
-    <nav class="navbar navbar-expand-sm navbar-uvu bg-uvu">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container">
-            <a href="@Url.Action("Index", "Home")"><img class="img-logo" src="~/Images/UVUMonogramWhite-0007.png" /></a>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Home")" class="nav-link">Home</a>
+                    </li>
                     <li class="nav-item ">
                         <a href="@Url.Action("Index", "Books")" class="nav-link">Books</a>
                     </li>
@@ -43,25 +46,25 @@
                         <a href="@Url.Action("Index", "Departments")" class="nav-link">Departments</a>
                     </li>
                     @if (User.IsInRole("canEdit"))
-                    {
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index", "Students")" class="nav-link">Students</a>
-                        </li>
-                    }
+    {
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Students")" class="nav-link">Students</a>
+                </li>
+}
 
                     @if (User.IsInRole("canEdit"))
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Check out
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="@Url.Action("Index", "CheckOutBooks")">Books</a>
-                                <a class="dropdown-item" href="@Url.Action("Index", "CheckOutSupplies")">Supplies</a>
-                            </div>
-                            </li>
-                     }
-                    </ul>
+    {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Check out
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="@Url.Action("Index", "CheckOutBooks")">Books</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "CheckOutSupplies")">Supplies</a>
+                    </div>
+                </li>
+}
+                </ul>
                     <br />
                     @Html.Partial("_LoginPartial")
                     <br />

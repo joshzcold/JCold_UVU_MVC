@@ -11,9 +11,9 @@
 <p>
     @if (User.IsInRole("canEdit"))
     {
-        <a href="@Url.Action("Create", "Departments")" style="color: white" class="btn btn-uvu">Add Department</a>
+        <a href="@Url.Action("Create", "Departments")" style="color: white" class="btn btn-primary">Add Department</a>
     }
-    <a href="@Url.Action("Filter", "Departments")" style="color: white" class="btn btn-uvu">Filter</a>
+    <a href="@Url.Action("Filter", "Departments")" style="color: white" class="btn btn-primary">Filter</a>
 </p>
 <table class="table">
     <tr>
