@@ -12,6 +12,7 @@ namespace JCold_UVU_MVC_Inventory.Models
         [Required(ErrorMessage ="Provide a Supply Name")]
         [Display(Name ="Supply Name")]
         public string Name { get; set; }
+        [DataType(DataType.Currency)]
         public string Value { get; set; }
         public int Number { get; set; }
         public bool Available { get; set; } = true;
