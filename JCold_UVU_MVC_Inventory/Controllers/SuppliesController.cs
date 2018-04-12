@@ -18,17 +18,37 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         // GET: Supplies
         public ActionResult Index()
         {
-            var UpdateQuery =
-                from chks in db.CheckOutSupplies
-                join sp in db.Supplies
-                on chks.SuppliesID equals sp.SuppliesID
-                where chks.SuppliesID == sp.SuppliesID && chks.ReturnedSupply == false
-                select sp;
-
-            foreach (Supplies chks in UpdateQuery)
+            var SetAvailableSuppliesTrue =
+            from chkb in db.CheckOutSupplies
+            join bk in db.Supplies
+            on chkb.SuppliesID equals bk.SuppliesID
+            where chkb.SuppliesID == bk.SuppliesID && chkb.ReturnedSupply == true
+            select bk;
+            foreach (Supplies chkb in SetAvailableSuppliesTrue)
             {
-                chks.Available = false;
+                chkb.Available = true;
             }
+
+            var SetAvailableSuppliesFalse =
+            from chkb in db.CheckOutSupplies
+            join bk in db.Supplies
+            on chkb.SuppliesID equals bk.SuppliesID
+            where chkb.SuppliesID == bk.SuppliesID && chkb.ReturnedSupply == false
+            select bk;
+            foreach (Supplies chkb in SetAvailableSuppliesFalse)
+            {
+                chkb.Available = false;
+            }
+
+            var ResetUpdateQuerySuppliesOnDelete =
+            from st in db.Supplies
+            where !(from ch in db.CheckOutSupplies select ch.SuppliesID).Contains(st.SuppliesID)
+            select st;
+            foreach (Supplies chkb in ResetUpdateQuerySuppliesOnDelete)
+            {
+                chkb.Available = true;
+            }
+            db.SaveChanges();
             return View(db.Supplies.ToList());
         }
 
