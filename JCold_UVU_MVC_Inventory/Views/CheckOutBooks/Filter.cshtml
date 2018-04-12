@@ -27,9 +27,9 @@
     c.Add(d => d.CheckedOutDate).Titled("Checked out Date");
     c.Add().Encoded(false).Sanitized(false).RenderValueAs(o => (
 @<b>
-    <a href="@Url.Action("Edit", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa  fa-lg fa-pencil-square"></i></a>
-    <a href="@Url.Action("Details", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa fa-lg fa-info-circle"></i></a>
-    <a href="@Url.Action("Delete", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa fa-lg fa-times-circle"></i></a>
+    <a href="@Url.Action("Edit", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa  fa-lg fa-pencil-square" title="Edit"></i></a>
+    <a href="@Url.Action("Details", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa fa-lg fa-info-circle" title="Details"></i></a>
+    <a href="@Url.Action("Delete", "CheckOutBooks", new {id = o.CheckOutBookID })"><i class="fa fa-lg fa-times-circle" title="Delete"></i></a>
 </b>));
         }).Sortable(true).Filterable(true).WithPaging(10)
 
