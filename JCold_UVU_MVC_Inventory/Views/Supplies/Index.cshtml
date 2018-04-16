@@ -91,7 +91,7 @@
                 }
                 @if (item.Files.Any(x => x.FileType == JCold_UVU_MVC_Inventory.Models.FileType.Photo))
                 {
-                    <i class="fa fa-camera"></i>
+                    <a href="@Url.Action("Details", "Supplies", new { id = item.SuppliesID})" class="fa fa-camera" style="color:black"></a>
                 }
             </td>
         </tr>
