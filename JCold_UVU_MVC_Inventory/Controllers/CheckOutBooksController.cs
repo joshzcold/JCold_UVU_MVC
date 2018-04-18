@@ -24,7 +24,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             
 
             var checkOutBooks = db.CheckOutBooks.Include(c => c.Books).Include(c => c.Department).Include(c => c.Students);
-            return View(checkOutBooks.ToList());
+            return View(checkOutBooks.ToList().OrderByDescending(p => p.CheckedOutDate));
         }
 
         public ActionResult Search(string checkoutbookstring, bool checkBookResp = true)

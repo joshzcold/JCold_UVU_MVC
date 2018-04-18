@@ -21,7 +21,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
         public ActionResult Index()
         {
             var checkOutSupplies = db.CheckOutSupplies.Include(c => c.Department).Include(c => c.Students).Include(c => c.Supplies);
-            return View(checkOutSupplies.ToList());
+            return View(checkOutSupplies.ToList().OrderByDescending(p => p.CheckedOutDate));
         }
 
         public ActionResult Filter()
