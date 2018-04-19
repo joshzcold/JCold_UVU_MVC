@@ -30,7 +30,7 @@
     <a href="@Url.Action("Details", "CheckOutSupplies", new {id = o.CheckOutSuppliesID })"><i class="fa fa-lg fa-info-circle" title="Details"></i></a>
     <a href="@Url.Action("Delete", "CheckOutSupplies", new {id = o.CheckOutSuppliesID })"><i class="fa fa-lg fa-times-circle" title="Delete"></i></a>
 </b>));
-        }).Sortable(true).Filterable(true).WithPaging(10)
+        }).Sortable(true).Filterable(true).WithPaging(10).WithMultipleFilters()
 
 
 
