@@ -14,7 +14,7 @@ namespace JCold_UVU_MVC_Inventory.Models
         public string Name { get; set; }
         [DataType(DataType.Currency)]
         public string Value { get; set; }
-        public int Number { get; set; }
+        public string Number { get; set; }
         public bool Available { get; set; } = true;
         [Display(Name = "Class Room")]
         public string ClassRoom { get; set; }

@@ -217,6 +217,14 @@
     <Compile Include="Migrations\201804092212058_InitialCreate.Designer.cs">
       <DependentUpon>201804092212058_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804190018295_Update-Database.cs" />
+    <Compile Include="Migrations\201804190018295_Update-Database.Designer.cs">
+      <DependentUpon>201804190018295_Update-Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804190021053_supplyintvaluechange.cs" />
+    <Compile Include="Migrations\201804190021053_supplyintvaluechange.Designer.cs">
+      <DependentUpon>201804190021053_supplyintvaluechange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Books.cs" />
@@ -470,6 +478,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804092212058_InitialCreate.resx">
       <DependentUpon>201804092212058_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804190018295_Update-Database.resx">
+      <DependentUpon>201804190018295_Update-Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804190021053_supplyintvaluechange.resx">
+      <DependentUpon>201804190021053_supplyintvaluechange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
