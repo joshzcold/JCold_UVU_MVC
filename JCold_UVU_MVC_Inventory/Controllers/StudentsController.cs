@@ -10,10 +10,10 @@ using JCold_UVU_MVC_Inventory.Models;
 
 namespace JCold_UVU_MVC_Inventory.Controllers
 {
+    [Authorize(Roles = "canEdit")]
     public class StudentsController : Controller
     {
         private JCold_UVU_MVC_InventoryDb db = new JCold_UVU_MVC_InventoryDb();
-        [Authorize(Roles = "canEdit")]
         // GET: Students
         public ActionResult Index(int? id)
         {
@@ -91,18 +91,21 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(db.Students.ToList());
         }
 
+        [Authorize(Roles = "canEdit")]
         public ActionResult Search(string studentName)
         {
             List<Students> studentList = db.Students.Where(x => x.StudentName.Contains(studentName) | x.UVUID.Contains(studentName)).ToList();
             return View(studentList);
         }
 
+        [Authorize(Roles = "canEdit")]
         public ActionResult Filter()
         {
             var Students = db.Students;
             return View(Students.ToList());
         }
 
+        [Authorize(Roles = "canEdit")]
         // GET: Students/Details/5
         public ActionResult Details(int? id)
         {
@@ -139,6 +142,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(students);
         }
 
+        [Authorize(Roles = "canEdit")]
         // GET: Students/Create
         public ActionResult Create()
         {
@@ -162,6 +166,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(students);
         }
 
+        [Authorize(Roles = "canEdit")]
         // GET: Students/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -193,6 +198,7 @@ namespace JCold_UVU_MVC_Inventory.Controllers
             return View(students);
         }
 
+        [Authorize(Roles = "canEdit")]
         // GET: Students/Delete/5
         public ActionResult Delete(int? id)
         {
